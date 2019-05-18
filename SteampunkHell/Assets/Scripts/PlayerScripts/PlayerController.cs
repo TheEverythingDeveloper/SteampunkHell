@@ -16,15 +16,16 @@ public class PlayerController : MonoBehaviour
     {
         _totalLife = life;
         _myMovementBody = GetComponent<MoveController>();
-        myCamera = transform.parent.GetComponentInChildren<CameraController>();
+        myCamera = GetComponent<CameraController>();
         _audioSrc = GetComponent<AudioSource>();
     }
 
     public void MakeSound(int id)
     {
-        _audioSrc.clip = audios[id];
+        //TODO: Sin sonidos
+        /*_audioSrc.clip = audios[id];
         _audioSrc.Stop();
-        _audioSrc.Play();
+        _audioSrc.Play();*/
     }
 
     private void Start()
@@ -33,7 +34,7 @@ public class PlayerController : MonoBehaviour
         UIController.Instance.previousHP = life;
     }
 
-    public bool ReceiveDamage(float amount, Vector3 pushForce)
+    public bool PlayerReceiveDamage(float amount, Vector3 pushForce)
     {
         life -= amount;
         life = Mathf.Clamp(life, 0, _totalLife);
