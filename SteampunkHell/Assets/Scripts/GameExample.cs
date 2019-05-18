@@ -12,8 +12,8 @@ public class GameExample : MonoBehaviour
     void Awake()
     {
         _totalHeroLife = heroLife;
-        EventsManager.SubscribeToEvent(EventType.GP_HeroLifeModified, OnHeroLifeUpdated);
-        EventsManager.SubscribeToEvent(EventType.GP_HeroDefeated, OnHeroDefeated);
+        EventsManager.SubscribeToEvent(TypeOfEvent.GP_HeroLifeModified, OnHeroLifeUpdated);
+        EventsManager.SubscribeToEvent(TypeOfEvent.GP_HeroDefeated, OnHeroDefeated);
     }
 
     void Update()
@@ -21,24 +21,24 @@ public class GameExample : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             heroLife -= 10;
-            EventsManager.TriggerEvent(EventType.GP_HeroLifeModified, new object[] { heroLife, _totalHeroLife});
+            EventsManager.TriggerEvent(TypeOfEvent.GP_HeroLifeModified, new object[] { heroLife, _totalHeroLife});
         }
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             heroLife += 10;
-            EventsManager.TriggerEvent(EventType.GP_HeroLifeModified, new object[] { heroLife, _totalHeroLife });
+            EventsManager.TriggerEvent(TypeOfEvent.GP_HeroLifeModified, new object[] { heroLife, _totalHeroLife });
         }
 
         if (heroLife <= 0)
-            EventsManager.TriggerEvent(EventType.GP_HeroDefeated);
+            EventsManager.TriggerEvent(TypeOfEvent.GP_HeroDefeated);
     }
 
     private void OnHeroDefeated(params object[] parameters)
     {
         Debug.Log("HERO DEFEATED");
-        EventsManager.UnsubscribeToEvent(EventType.GP_HeroDefeated, OnHeroDefeated);
-        EventsManager.UnsubscribeToEvent(EventType.GP_HeroLifeModified, OnHeroLifeUpdated);
+        EventsManager.UnsubscribeToEvent(TypeOfEvent.GP_HeroDefeated, OnHeroDefeated);
+        EventsManager.UnsubscribeToEvent(TypeOfEvent.GP_HeroLifeModified, OnHeroLifeUpdated);
     }
 
     private void OnHeroLifeUpdated(params object[] parameters)
