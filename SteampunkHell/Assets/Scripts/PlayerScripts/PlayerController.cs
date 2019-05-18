@@ -3,14 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IVulnerable
 {
     public float life;
     private float _totalLife;
     private MoveController _myMovementBody;
     [HideInInspector] public CameraController myCamera;
     private AudioSource _audioSrc;
-    public List<AudioClip> audios; 
+    public List<AudioClip> audios;
+
+    public float shootCD;
+    float _totalShootCD;
 
     private void Awake()
     {
@@ -18,6 +21,7 @@ public class PlayerController : MonoBehaviour
         _myMovementBody = GetComponent<MoveController>();
         myCamera = GetComponent<CameraController>();
         _audioSrc = GetComponent<AudioSource>();
+        _totalShootCD = shootCD;
     }
 
     public void MakeSound(int id)
@@ -34,7 +38,20 @@ public class PlayerController : MonoBehaviour
         UIController.Instance.previousHP = life;
     }
 
-    public bool PlayerReceiveDamage(float amount, Vector3 pushForce)
+    private void Update()
+    {
+        if(shootCD > 0)
+        {
+            shootCD -= Time.deltaTime;
+        }
+        else if(Input.GetMouseButton(0))
+        {
+            BulletSpawner.Instance.GetBulletAt(myCamera._myCam.transform);
+            shootCD = _totalShootCD;
+        }
+    }
+
+    public bool ReceiveDamage(float amount, Vector3 pushForce)
     {
         life -= amount;
         life = Mathf.Clamp(life, 0, _totalLife);

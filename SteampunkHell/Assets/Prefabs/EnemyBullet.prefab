@@ -105,6 +105,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  maxDistance: 58.3
-  damage: 5
+  maxDistance: 70
+  damage: 10
   agressiveness: 3
+  wallLayerMask:
+    serializedVersion: 2
+    m_Bits: 4096

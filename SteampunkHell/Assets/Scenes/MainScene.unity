@@ -559,11 +559,6 @@ PrefabInstance:
       propertyPath: m_Positions.Array.data[2].z
       value: 15.44
       objectReference: {fileID: 0}
-    - target: {fileID: 7598125672754590833, guid: 5866791aa0c19a745823427c1c32e5d6,
-        type: 3}
-      propertyPath: aimSpeed
-      value: 0.008
-      objectReference: {fileID: 0}
     - target: {fileID: 6864701247249795294, guid: 5866791aa0c19a745823427c1c32e5d6,
         type: 3}
       propertyPath: m_Name
@@ -723,7 +718,7 @@ GameObject:
   - component: {fileID: 134178799}
   - component: {fileID: 134178798}
   - component: {fileID: 134178797}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1547,7 +1542,7 @@ GameObject:
   - component: {fileID: 398031597}
   - component: {fileID: 398031596}
   - component: {fileID: 398031595}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2465,7 +2460,7 @@ GameObject:
   - component: {fileID: 795109207}
   - component: {fileID: 795109206}
   - component: {fileID: 795109205}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4191,7 +4186,7 @@ GameObject:
   - component: {fileID: 1562653936}
   - component: {fileID: 1562653935}
   - component: {fileID: 1562653934}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Escenario
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6400,8 +6395,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1562653933}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.18743, y: 1.803, z: -0.74972}
+  m_LocalScale: {x: 0.62514, y: 0.62514, z: 0.62514}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2

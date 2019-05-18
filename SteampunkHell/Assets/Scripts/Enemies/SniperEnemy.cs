@@ -12,8 +12,10 @@ public class SniperEnemy : Enemy
     public float aimSpeed;
     [Tooltip("Multiplicador del aim. Mientras mas cerca se encuentre del player, mas rapido apunta")]
     public float aimSpeedMultiplier;
+    [Tooltip("Tiempo de espera entre cada vez que dispara y apunta de nuevo")]
+    public float aimCD;
 
-    EnemyBulletSpawner _bulletSpawner;
+    float _totalAimCD;
     LineRenderer _sniperLine;
     Vector3 laserPosition; //el laser que se acerca al jugador
 
@@ -21,7 +23,7 @@ public class SniperEnemy : Enemy
     {
         base.Awake();
         _sniperLine = GetComponent<LineRenderer>();
-        _bulletSpawner = GetComponentInParent<EnemyBulletSpawner>();
+        _totalAimCD = aimCD;
     }
 
     protected override void Start()
@@ -32,18 +34,28 @@ public class SniperEnemy : Enemy
 
     private void Update()
     {
+        if (dead) return;
+
         Aim();
+ 
     }
 
     private void Aim()
     {
-        _sniperLine.SetPosition(0, transform.position);
-        float distance = Vector3.Distance(transform.position, _player.transform.position);
-        float endLaserDistance = Vector3.Distance(_sniperLine.GetPosition(1), _player.transform.position);
-        //Rotar al enemigo para mirar cada vez mas cerca al jugador
-        laserPosition = Vector3.MoveTowards(laserPosition, _player.transform.position - Vector3.up * 0.5f
-            , aimSpeed + aimSpeedMultiplier / distance * (endLaserDistance > failOffset ? 1 : 0.2f));
-        transform.LookAt(laserPosition);
+        if (aimCD > 0)
+        {
+            aimCD -= Time.deltaTime;
+        }
+        else
+        {
+            _sniperLine.SetPosition(0, transform.position);
+            float distance = Vector3.Distance(transform.position, _player.transform.position);
+            float endLaserDistance = Vector3.Distance(_sniperLine.GetPosition(1), _player.transform.position);
+            //Rotar al enemigo para mirar cada vez mas cerca al jugador
+            laserPosition = Vector3.MoveTowards(laserPosition, _player.transform.position - Vector3.up * 0.5f
+                , aimSpeed + aimSpeedMultiplier / distance * (endLaserDistance > failOffset ? 1 : 0.2f));
+            transform.LookAt(laserPosition);
+        }
 
         //Raycast para dibujar el laser
         RaycastHit hit;
@@ -55,11 +67,12 @@ public class SniperEnemy : Enemy
 
     protected override void DeathFeedback()
     {
-
+        _sniperLine.enabled = false;
     }
 
     protected override void Shoot()
     {
-        _bulletSpawner.GetBulletAt(transform);
+        aimCD = _totalAimCD;
+        EnemyBulletSpawner.Instance.GetBulletAt(transform);
     }
 }

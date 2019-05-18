@@ -11,6 +11,9 @@ public abstract class Bullet : MonoBehaviour, IAgressive
     [Tooltip("Cuanto va a empujar cuando pega a algo")]
     public float agressiveness;
 
+    [Tooltip("aca van a ir todas las layers que destruyan a la bala al pegar")]
+    public LayerMask wallLayerMask;
+
     protected float _currentDistance;
 
     protected virtual void Reset()
@@ -28,9 +31,19 @@ public abstract class Bullet : MonoBehaviour, IAgressive
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(((1 << collision.gameObject.layer) & wallLayerMask) != 0)
+        {
+            ReturnBullet();
+        }
+    }
+
     protected abstract void ReturnBullet();
 
     public float GetDamage() => damage;
 
     public float GetAgressiveness() => agressiveness;
+
+    public void Hit() => ReturnBullet();
 }

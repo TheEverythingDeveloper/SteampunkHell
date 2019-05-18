@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6964994256025517805}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -12.303867, y: 3.5259418, z: -4.063036}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.18818423, y: 0.18818423, z: 0.18818423}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -104,5 +104,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b87fa9e2bf4c0124daa033078be99659, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12.07
-  maxDistance: 9.2
+  speed: 30
+  maxDistance: 70
+  damage: 5
+  agressiveness: 5
+  wallLayerMask:
+    serializedVersion: 2
+    m_Bits: 4096

@@ -19,17 +19,7 @@ public class EnemyBulletSpawner : MonoBehaviour
         _Instance = this;
         pool = new ObjectPool<EnemyBullet>(BulletFactory, EnemyBullet.TurnOn, EnemyBullet.TurnOff, 50, true);
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            var b = pool.GetObject();
-            b.transform.position = Vector3.zero;
-            b.transform.forward = Vector3.forward;
-        }
-    }
-
+    
     public void GetBulletAt(Transform targetTransform)
     {
         var b = pool.GetObject();
@@ -37,12 +27,12 @@ public class EnemyBulletSpawner : MonoBehaviour
         b.transform.localRotation = targetTransform.localRotation;
     }
 
+    public EnemyBullet bulletPrefab;
     public EnemyBullet BulletFactory()
     {
         return Instantiate(bulletPrefab);
     }
 
-    public EnemyBullet bulletPrefab;
 
     private ObjectPool<EnemyBullet> pool;
 

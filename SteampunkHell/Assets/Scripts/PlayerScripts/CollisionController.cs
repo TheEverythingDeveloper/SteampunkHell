@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class CollisionController : MonoBehaviour
 {
-    PlayerController _myPlayerController;
+    IVulnerable _owner;
+    public LayerMask IAgressiveLayers;
 
     private void Awake()
     {
-        _myPlayerController = GetComponent<PlayerController>();
+        _owner = GetComponent<IVulnerable>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         GameObject otherGo = other.gameObject;
-        if(otherGo.layer == Layers.ENEMY)
+        if(((1 << otherGo.layer) & IAgressiveLayers) != 0)
         {
-            _myPlayerController.PlayerReceiveDamage(otherGo.GetComponent<IAgressive>().GetDamage(),
+            otherGo.GetComponent<IAgressive>().Hit();
+            _owner.ReceiveDamage(otherGo.GetComponent<IAgressive>().GetDamage(),
                 (transform.position - otherGo.transform.position) * otherGo.GetComponent<IAgressive>().GetAgressiveness()
                 + Vector3.up * (otherGo.GetComponent<IAgressive>().GetAgressiveness() * 1.5f));
         }

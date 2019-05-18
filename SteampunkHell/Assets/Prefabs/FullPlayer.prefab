@@ -32,6 +32,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6331719983435363180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2693628188318476764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86a74141d07ee324290bfebded1e7799, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IAgressiveLayers:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!1 &2693628188540880093
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,13 +206,25 @@ PrefabInstance:
       propertyPath: _myCam
       value: 
       objectReference: {fileID: 2693628188540880067}
+    - target: {fileID: 8062701074734061916, guid: e436ed1582305a240b9891d32a96eb19,
+        type: 3}
+      propertyPath: shootCD
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8062701074908449895, guid: e436ed1582305a240b9891d32a96eb19,
         type: 3}
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3030301144808116483, guid: e436ed1582305a240b9891d32a96eb19, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e436ed1582305a240b9891d32a96eb19, type: 3}
+--- !u!1 &2693628188318476764 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8062701074734061890, guid: e436ed1582305a240b9891d32a96eb19,
+    type: 3}
+  m_PrefabInstance: {fileID: 5369917449055285406}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2693628188318476739 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8062701074734061917, guid: e436ed1582305a240b9891d32a96eb19,

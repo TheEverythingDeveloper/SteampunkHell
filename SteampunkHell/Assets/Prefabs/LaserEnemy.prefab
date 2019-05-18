@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 6864701247249795288}
   - component: {fileID: 6864701247249795289}
   - component: {fileID: 6864701247249795301}
+  - component: {fileID: 2258659841636523653}
   - component: {fileID: 7598125672754590833}
   - component: {fileID: 85961916283210213}
   m_Layer: 11
@@ -189,6 +190,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &2258659841636523653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6864701247249795294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86a74141d07ee324290bfebded1e7799, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IAgressiveLayers:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &7598125672754590833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,10 +222,12 @@ MonoBehaviour:
   bulletDamage: 20
   bulletSpeed: 5
   shootCd: 4
-  failOffset: 5.04
-  failOffsetRange: {x: 0, y: 6.96}
-  aimSpeed: 0.003
+  agressiveness: 5
+  failOffset: 5
+  failOffsetRange: {x: 0, y: 7}
+  aimSpeed: 0.015
   aimSpeedMultiplier: 2.4
+  aimCD: 2
 --- !u!120 &85961916283210213
 LineRenderer:
   m_ObjectHideFlags: 0

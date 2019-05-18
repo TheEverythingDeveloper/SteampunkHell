@@ -6,12 +6,8 @@ public class BulletSpawner : MonoBehaviour
 {
     public static BulletSpawner Instance
     {
-        get
-        {
-            return _Instance;
-        }
+        get { return _Instance; }
     }
-
     private static BulletSpawner _Instance;
 
     private void Start()
@@ -19,23 +15,18 @@ public class BulletSpawner : MonoBehaviour
         _Instance = this;
         pool = new ObjectPool<PlayerBullet>(BulletFactory, PlayerBullet.TurnOn, PlayerBullet.TurnOff, 20, true);
     }
-
-    private void Update()
+    public void GetBulletAt(Transform targetTransform)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            var b = pool.GetObject();
-            b.transform.position = Vector3.zero;
-            b.transform.forward = Vector3.forward;
-        }
+        var b = pool.GetObject();
+        b.transform.position = targetTransform.position;
+        b.transform.localRotation = targetTransform.localRotation;
     }
 
+    public PlayerBullet bulletPrefab;
     public PlayerBullet BulletFactory()
     {
         return Instantiate(bulletPrefab);
     }
-
-    public PlayerBullet bulletPrefab;
 
     private ObjectPool<PlayerBullet> pool;
 

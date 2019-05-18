@@ -6,4 +6,6 @@ public interface IAgressive
 {
     float GetDamage();
     float GetAgressiveness();
+
+    void Hit();
 }
