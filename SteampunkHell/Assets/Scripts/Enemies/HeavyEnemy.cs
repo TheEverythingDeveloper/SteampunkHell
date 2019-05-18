@@ -9,6 +9,11 @@ public class HeavyEnemy : Enemy
         base.Awake();
 
     }
+    protected override void Start()
+    {
+        base.Start();
+
+    }
 
     protected override void DeathFeedback()
     {

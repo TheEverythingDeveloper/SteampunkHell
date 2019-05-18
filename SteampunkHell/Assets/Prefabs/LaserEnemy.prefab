@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 6864701247249795301}
   - component: {fileID: 7598125672754590833}
   - component: {fileID: 85961916283210213}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LaserEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,11 +205,11 @@ MonoBehaviour:
   movementSpeed: 10
   bulletDamage: 20
   bulletSpeed: 5
-  shootCd: 1.49
-  failOffset: 0.45
+  shootCd: 4
+  failOffset: 5.04
+  failOffsetRange: {x: 0, y: 6.96}
   aimSpeed: 0.003
   aimSpeedMultiplier: 2.4
-  aimDistanceMultiplier: 0.33
 --- !u!120 &85961916283210213
 LineRenderer:
   m_ObjectHideFlags: 0

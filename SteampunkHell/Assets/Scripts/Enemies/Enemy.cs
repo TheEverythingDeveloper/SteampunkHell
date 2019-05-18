@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Enemy : RotationScript //Hereda las corrutinas de rotacion smooth
+public abstract class Enemy : RotationScript /*Hereda las corrutinas de rotacion smooth*/, IAgressive
 {
     [Tooltip("Cantidad de vida de la unidad")]
     public float life;
@@ -15,6 +15,10 @@ public abstract class Enemy : RotationScript //Hereda las corrutinas de rotacion
     [Tooltip("Cooldown de disparo")]
     public float shootCd;
 
+
+    [Tooltip("Cuanto va a empujar cuando pega a algo")]
+    public float agressiveness;
+
     protected PlayerController _player;
     protected float _totalLife;
     protected Rigidbody _rb;
@@ -26,6 +30,18 @@ public abstract class Enemy : RotationScript //Hereda las corrutinas de rotacion
         _totalLife = life;
         _rb = GetComponent<Rigidbody>();
         _player = FindObjectOfType<PlayerController>();
+    }
+
+    protected virtual void Start()
+    {
+        StartCoroutine(ShootCoroutine());
+    }
+
+    IEnumerator ShootCoroutine()
+    {
+        Shoot();
+        yield return new WaitForSeconds(shootCd);
+        StartCoroutine(ShootCoroutine());
     }
 
     public bool ReceiveDamage(float amount, Vector3 pushForce)
@@ -61,4 +77,7 @@ public abstract class Enemy : RotationScript //Hereda las corrutinas de rotacion
 
     protected abstract void Shoot();
     protected abstract void DeathFeedback();
+
+    public float GetDamage() => bulletDamage; //si el jugador lo toca le va a sacar vida y empujar
+    public float GetAgressiveness() => agressiveness; //cuanto va a empujar al player cuando lo toca
 }

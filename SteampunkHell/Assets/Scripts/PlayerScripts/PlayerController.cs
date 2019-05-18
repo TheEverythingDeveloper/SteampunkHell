@@ -59,6 +59,5 @@ public class PlayerController : MonoBehaviour
         _myMovementBody.HitPushForce(pushForce);
         UIController.Instance.ChangeHP(life);
         Debug.Log("Recibiste Daño");
-        //TODO: Feedback de daño
     }
 }

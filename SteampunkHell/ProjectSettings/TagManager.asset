@@ -14,10 +14,10 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
-  - 
-  - 
-  - 
+  - PlayerBullets
+  - Player
+  - Enemy
+  - Wall
   - 
   - 
   - 
