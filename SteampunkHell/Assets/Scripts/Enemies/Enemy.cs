@@ -70,7 +70,6 @@ public abstract class Enemy : RotationScript /*Hereda las corrutinas de rotacion
     protected void ReceiveDamageFeedback(Vector3 pushForce)
     {
         HitPushForce(pushForce);
-        UIController.Instance.ChangeHP(life);
         //TODO: Feedback de daño
     }
 
