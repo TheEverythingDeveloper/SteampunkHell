@@ -32,6 +32,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2173467678994859842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2693628188318476764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50a99c004b490734e9d8fb454b8086d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audios: []
 --- !u!114 &6331719983435363180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47,6 +60,24 @@ MonoBehaviour:
   IAgressiveLayers:
     serializedVersion: 2
     m_Bits: 2048
+--- !u!114 &7441577628944065665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2693628188318476764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38a082572f4be9648974c1556d82b9ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootCD: 0.3
+  bulletSpeed: 30
+  damage: 5
+  agressiveness: 5
+  maxDistance: 70
+  myCamera: {fileID: 0}
 --- !u!1 &2693628188540880093
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,6 +232,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8062701074908449895, guid: e436ed1582305a240b9891d32a96eb19,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8062701074734061919, guid: e436ed1582305a240b9891d32a96eb19,
         type: 3}
       propertyPath: _myCam
@@ -211,13 +247,9 @@ PrefabInstance:
       propertyPath: shootCD
       value: 0.2
       objectReference: {fileID: 0}
-    - target: {fileID: 8062701074908449895, guid: e436ed1582305a240b9891d32a96eb19,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3030301144808116483, guid: e436ed1582305a240b9891d32a96eb19, type: 3}
+    - {fileID: 8992721581894810692, guid: e436ed1582305a240b9891d32a96eb19, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e436ed1582305a240b9891d32a96eb19, type: 3}
 --- !u!1 &2693628188318476764 stripped
 GameObject:

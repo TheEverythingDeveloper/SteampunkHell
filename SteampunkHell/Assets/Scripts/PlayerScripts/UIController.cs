@@ -18,6 +18,11 @@ public class UIController : MonoBehaviour
         Instance = this;
     }
 
+    public void ReceiveDamageFeedback(float life, Vector3 pushForce)
+    {
+        ChangeHP(life);
+    }
+
     public void ChangeHP(float newHP)
     {
         if(newHP < previousHP)

@@ -31,6 +31,14 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.paused)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            return;
+        }
+        else
+            Cursor.lockState = CursorLockMode.Locked;
+
         rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
         rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
         rotationX += Input.GetAxis("Mouse X") * sensitivityX;

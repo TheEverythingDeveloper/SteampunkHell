@@ -15,11 +15,12 @@ public class BulletSpawner : MonoBehaviour
         _Instance = this;
         pool = new ObjectPool<PlayerBullet>(BulletFactory, PlayerBullet.TurnOn, PlayerBullet.TurnOff, 20, true);
     }
-    public void GetBulletAt(Transform targetTransform)
+    public PlayerBullet GetBulletAt(Transform targetTransform)
     {
         var b = pool.GetObject();
         b.transform.position = targetTransform.position;
         b.transform.localRotation = targetTransform.localRotation;
+        return b;
     }
 
     public PlayerBullet bulletPrefab;

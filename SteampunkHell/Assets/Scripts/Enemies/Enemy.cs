@@ -21,7 +21,7 @@ public abstract class Enemy : RotationScript /*Hereda las corrutinas de rotacion
     [Tooltip("Cuanto va a empujar cuando pega a algo")]
     public float agressiveness;
 
-    protected PlayerController _player;
+    protected PlayerLifeController _player;
     protected float _totalLife;
     protected Rigidbody _rb;
 
@@ -31,7 +31,7 @@ public abstract class Enemy : RotationScript /*Hereda las corrutinas de rotacion
     {
         _totalLife = life;
         _rb = GetComponent<Rigidbody>();
-        _player = FindObjectOfType<PlayerController>();
+        _player = FindObjectOfType<PlayerLifeController>();
     }
 
     protected virtual void Start()
@@ -41,9 +41,9 @@ public abstract class Enemy : RotationScript /*Hereda las corrutinas de rotacion
 
     IEnumerator ShootCoroutine()
     {
-        if (dead) yield return null;
-        Shoot();
+        if (dead) yield break;
         yield return new WaitForSeconds(shootCd + Random.Range(-1f,1f));
+        Shoot();
         StartCoroutine(ShootCoroutine());
     }
 

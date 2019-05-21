@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CollisionController : MonoBehaviour
 {
+    Model _model;
+
     IVulnerable _owner;
     public LayerMask IAgressiveLayers;
 

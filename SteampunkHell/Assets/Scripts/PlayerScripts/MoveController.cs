@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class MoveController : MonoBehaviour
 {
@@ -20,25 +21,21 @@ public class MoveController : MonoBehaviour
 
     private void Update()
     {
-        CanJump();
+        IsGrounded();
     }
 
-    public void HitPushForce(Vector3 pushForce)
+    public void HitPushForce(float amount, Vector3 pushForce)
     {
         _rb.AddForce(pushForce, ForceMode.Impulse);
     }
 
-    private void CanJump()
+    public void TryJump()
     {
-        IsGrounded();
         if (!_isGrounded) return;
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            GetComponent<PlayerController>().MakeSound(0);
-            _rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z);
-            _rb.AddForce(transform.up * _jumpSpeed, ForceMode.Impulse);
-        }
+        GetComponent<PlayerAudioController>().MakeSound(0);
+        _rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z);
+        _rb.AddForce(transform.up * _jumpSpeed, ForceMode.Impulse);
     }
 
     private void IsGrounded()
@@ -58,13 +55,7 @@ public class MoveController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (GameManager.paused)
-        {
-            Cursor.lockState = CursorLockMode.None;
-            return;
-        }
-        else
-            Cursor.lockState = CursorLockMode.Locked;
+        if (GameManager.paused) return;
 
         var newForward = GetComponent<CameraController>()._myCam.transform.forward;
         transform.forward = new Vector3(newForward.x, 0, newForward.z);
