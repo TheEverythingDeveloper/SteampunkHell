@@ -18,4 +18,7 @@ public class GlobalVariables
     public Vector2 failOffsetRange; //Esta va a ser el rango posible de distancia a la que va a apuntar del jugador. Si esta en 0 va a apuntar a su frente
     public float aimSpeed; //Esta va a ser la velocidad general en la que va a apuntar
     public float aimSpeedMultiplier; // Multiplicador del aim. Mientras mas cerca se encuentre del player, mas rapido apunta
+
+    //Variables Enemy Explosive
+    public float timeExploit;
 }

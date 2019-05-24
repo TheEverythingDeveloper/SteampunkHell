@@ -21,4 +21,12 @@ public class VariablesPointer
         aimSpeed = 0.015f,
         aimSpeedMultiplier = 2.4f
     };
+
+    public static readonly GlobalVariables EnemyExplosiveState = new GlobalVariables
+    {
+        damage = 10,
+        speed = 3,
+        maxDistance = 5,
+        timeExploit = 2
+    };
 }
