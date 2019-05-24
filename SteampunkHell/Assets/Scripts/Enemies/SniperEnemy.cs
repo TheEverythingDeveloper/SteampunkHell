@@ -5,13 +5,7 @@ using UnityEngine;
 public class SniperEnemy : Enemy
 {
     [Tooltip("Esta va a ser la distancia a la que va a apuntar del jugador. Si esta en 0 va a apuntar a su frente")]
-    public float failOffset;
-    [Tooltip("Esta va a ser el rango posible de distancia a la que va a apuntar del jugador. Si esta en 0 va a apuntar a su frente")]
-    public Vector2 failOffsetRange;
-    [Tooltip("Esta va a ser la velocidad general en la que va a apuntar")]
-    public float aimSpeed;
-    [Tooltip("Multiplicador del aim. Mientras mas cerca se encuentre del player, mas rapido apunta")]
-    public float aimSpeedMultiplier;
+    float _failOffset; //
     [Tooltip("Tiempo de espera entre cada vez que dispara y apunta de nuevo")]
     public float aimCD;
 
@@ -29,7 +23,7 @@ public class SniperEnemy : Enemy
     protected override void Start()
     {
         base.Start();
-        failOffset = Random.Range(failOffsetRange.x, failOffsetRange.y);
+        _failOffset = Random.Range(VariablesPointer.EnemySniperState.failOffsetRange.x, VariablesPointer.EnemySniperState.failOffsetRange.y);
     }
 
     private void Update()
@@ -53,7 +47,7 @@ public class SniperEnemy : Enemy
             float endLaserDistance = Vector3.Distance(_sniperLine.GetPosition(1), _player.transform.position);
             //Rotar al enemigo para mirar cada vez mas cerca al jugador
             laserPosition = Vector3.MoveTowards(laserPosition, _player.transform.position - Vector3.up * 0.5f
-                , aimSpeed + aimSpeedMultiplier / distance * (endLaserDistance > failOffset ? 1 : 0.2f));
+                , VariablesPointer.EnemySniperState.aimSpeed + VariablesPointer.EnemySniperState.aimSpeedMultiplier / distance * (endLaserDistance > _failOffset ? 1 : 0.2f));
             transform.LookAt(laserPosition);
         }
 

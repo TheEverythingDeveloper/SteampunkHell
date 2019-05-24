@@ -6,12 +6,8 @@ public abstract class Enemy : RotationScript /*Hereda las corrutinas de rotacion
 {
     [Tooltip("Cantidad de vida de la unidad")]
     public float life;
-    [Tooltip("Velocidad de la unidad")]
-    public float movementSpeed;
     [Tooltip("Daño de las balas que spawnea")]
     public float bulletDamage;
-    [Tooltip("Velocidad de las balas que spawnea")]
-    public float bulletSpeed;
     [Tooltip("Cooldown de disparo")]
     public float shootCd;
 

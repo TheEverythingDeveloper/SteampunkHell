@@ -31,10 +31,10 @@ public class PlayerShootController : MonoBehaviour
         if (shootCD > 0) return;
 
         var spawnedBullet = BulletSpawner.Instance.GetBulletAt(myCamera._myCam.transform);
-        spawnedBullet.speed = bulletSpeed;
-        spawnedBullet.maxDistance = maxDistance;
-        spawnedBullet.agressiveness = agressiveness;
-        spawnedBullet.damage = damage;
+        VariablesPointer.bulletEnemyState.speed = bulletSpeed;
+        VariablesPointer.bulletEnemyState.maxDistance = maxDistance;
+        VariablesPointer.bulletEnemyState.agressiveness = agressiveness;
+        VariablesPointer.bulletEnemyState.damage = damage;
         shootCD = _totalShootCD;
     }
 }

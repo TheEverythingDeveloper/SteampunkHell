@@ -4,12 +4,6 @@ using UnityEngine;
 
 public abstract class Bullet : MonoBehaviour, IAgressive
 {
-    public float speed;
-    public float maxDistance;
-    [Tooltip("Cuanta vida va a sacar cuando pega")]
-    public float damage;
-    [Tooltip("Cuanto va a empujar cuando pega a algo")]
-    public float agressiveness;
 
     [Tooltip("aca van a ir todas las layers que destruyan a la bala al pegar")]
     public LayerMask wallLayerMask;
@@ -23,9 +17,9 @@ public abstract class Bullet : MonoBehaviour, IAgressive
 
     protected virtual void Update()
     {
-        transform.position += transform.forward * speed * Time.deltaTime;
-        _currentDistance += speed * Time.deltaTime;
-        if (_currentDistance > maxDistance)
+        transform.position += transform.forward * VariablesPointer.bulletEnemyState.speed * Time.deltaTime;
+        _currentDistance += VariablesPointer.bulletEnemyState.speed * Time.deltaTime;
+        if (_currentDistance > VariablesPointer.bulletEnemyState.maxDistance)
         {
             ReturnBullet();
         }
@@ -41,9 +35,9 @@ public abstract class Bullet : MonoBehaviour, IAgressive
 
     protected abstract void ReturnBullet();
 
-    public float GetDamage() => damage;
+    public float GetDamage() => VariablesPointer.bulletEnemyState.damage;
 
-    public float GetAgressiveness() => agressiveness;
+    public float GetAgressiveness() => VariablesPointer.bulletEnemyState.agressiveness;
 
     public void Hit() => ReturnBullet();
 }
