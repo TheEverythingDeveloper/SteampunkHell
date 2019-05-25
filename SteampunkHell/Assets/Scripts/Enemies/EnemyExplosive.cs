@@ -31,7 +31,7 @@ public class EnemyExplosive : Enemy
         if(Vector3.Distance(_player.gameObject.transform.position, transform.position) < VariablesPointer.EnemyExplosiveState.maxDistance)
         {
             _player.ReceiveDamage(VariablesPointer.EnemyExplosiveState.damage,
-                (transform.position - _player.gameObject.transform.position) * agressiveness
+                (_player.gameObject.transform.position - transform.position) * agressiveness
                 + Vector3.up * (agressiveness * 1.5f));
         }
         DeathFeedback();
