@@ -12,12 +12,12 @@ public abstract class Enemy : RotationScript /*Hereda las corrutinas de rotacion
     public float shootCd;
 
     public bool dead;
-
+    public Unit unitType;
 
     [Tooltip("Cuanto va a empujar cuando pega a algo")]
     public float agressiveness;
 
-    protected PlayerLifeController _player;
+    protected Model _player;
     protected float _totalLife;
     protected Rigidbody _rb;
 
@@ -27,7 +27,7 @@ public abstract class Enemy : RotationScript /*Hereda las corrutinas de rotacion
     {
         _totalLife = life;
         _rb = GetComponent<Rigidbody>();
-        _player = FindObjectOfType<PlayerLifeController>();
+        _player = FindObjectOfType<Model>();
     }
 
     protected virtual void Start()
@@ -58,7 +58,9 @@ public abstract class Enemy : RotationScript /*Hereda las corrutinas de rotacion
 
     protected void Death()
     {
+        if (dead) return;
         dead = true;
+        _player.KillEnemy(unitType);
         DeathFeedback();
         //TODO: Volver al pool o algo asi
     }

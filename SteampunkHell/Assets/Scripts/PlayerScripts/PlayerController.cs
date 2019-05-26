@@ -21,5 +21,9 @@ public class PlayerController : MonoBehaviour
         {
             _model.Shoot();
         }
+        if (Input.GetMouseButtonUp(0))
+        {
+            _model.StopShooting();
+        }
     }
 }

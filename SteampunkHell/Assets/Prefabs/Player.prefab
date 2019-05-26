@@ -19,6 +19,8 @@ GameObject:
   - component: {fileID: 3030301144808116483}
   - component: {fileID: 8992721581894810692}
   - component: {fileID: 8062701074734061913}
+  - component: {fileID: 7923975036820567787}
+  - component: {fileID: 3336831377320711632}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -186,6 +188,44 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &7923975036820567787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8062701074734061890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c72645ee9920b2840bfd47cf871976a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  points: 0
+  pointsTable:
+  - 80
+  - 220
+  - 50
+  - 1000
+  - 7500
+--- !u!114 &3336831377320711632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8062701074734061890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 537de1c365ed3a64b882923b7216ec20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  adrenalin: 0
+  adrenalinTable:
+  - 15
+  - 25
+  - 10
+  - 60
+  - 100
 --- !u!1 &8062701074908449895
 GameObject:
   m_ObjectHideFlags: 0

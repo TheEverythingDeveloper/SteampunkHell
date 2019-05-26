@@ -6,12 +6,7 @@ public class EnemyExplosive : Enemy
 {
     float _dist;
     bool _exploitActive;
-
-    private new void Start()
-    {
-        
-    }
-
+    
     private void Update()
     {
         if (dead || _exploitActive) return;

@@ -9,6 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 28062928}
+  - component: {fileID: 5781744608693998742}
+  - component: {fileID: 3651475219487543931}
+  - component: {fileID: 5631962606287179097}
   m_Layer: 0
   m_Name: EnemyExplosive
   m_TagString: Untagged
@@ -31,6 +34,52 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5781744608693998742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28062927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8613d101af625134ab3944ff2f777620, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 10
+  bulletDamage: 0
+  shootCd: 0
+  dead: 0
+  unitType: 2
+  agressiveness: 5
+--- !u!135 &3651475219487543931
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28062927}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.17
+  m_Center: {x: -0.18, y: 0.36, z: -0.38}
+--- !u!114 &5631962606287179097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28062927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86a74141d07ee324290bfebded1e7799, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IAgressiveLayers:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &40186105
 GameObject:
   m_ObjectHideFlags: 0
