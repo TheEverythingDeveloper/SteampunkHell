@@ -47,7 +47,7 @@ public class SniperEnemy : Enemy
             float endLaserDistance = Vector3.Distance(_sniperLine.GetPosition(1), _player.transform.position);
             //Rotar al enemigo para mirar cada vez mas cerca al jugador
             laserPosition = Vector3.MoveTowards(laserPosition, _player.transform.position - Vector3.up * 0.5f
-                , VariablesPointer.EnemySniperState.aimSpeed + VariablesPointer.EnemySniperState.aimSpeedMultiplier / distance * (endLaserDistance > _failOffset ? 1 : 0.2f));
+                , (VariablesPointer.EnemySniperState.aimSpeed + VariablesPointer.EnemySniperState.aimSpeedMultiplier / distance * (endLaserDistance > _failOffset ? 1 : 0.2f)) * Time.deltaTime * 100);
             transform.LookAt(laserPosition);
         }
 

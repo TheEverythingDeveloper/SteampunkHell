@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class VariablesPointer 
 {
+    public static GlobalVariables PlayerBulletState = new GlobalVariables
+    {
+        speed = 20,
+        maxDistance = 70,
+        damage = 10,
+        agressiveness = 3
+    };
+
     public static readonly GlobalVariables bulletEnemyState = new GlobalVariables
     {
         speed = 20,

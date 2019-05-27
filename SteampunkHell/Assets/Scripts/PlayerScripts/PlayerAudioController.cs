@@ -7,6 +7,8 @@ public class PlayerAudioController : MonoBehaviour
     private AudioSource _audioSrc;
     public List<AudioClip> audios;
 
+    public bool muteVolume;
+
     public void Awake()
     {
         _audioSrc = GetComponent<AudioSource>();
@@ -18,4 +20,14 @@ public class PlayerAudioController : MonoBehaviour
         _audioSrc.Stop();
         _audioSrc.Play();
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            muteVolume = !muteVolume;
+            AudioListener.pause = muteVolume;
+            AudioListener.volume = muteVolume ? 0 : 1;
+        }
+    } 
 }

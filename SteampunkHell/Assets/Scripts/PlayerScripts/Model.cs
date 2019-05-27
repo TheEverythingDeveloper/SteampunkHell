@@ -13,11 +13,15 @@ public class Model : MonoBehaviour
     PlayerPointsController _pointsControl;
     PlayerShootController _shootControl;
     PlayerAudioController _audioControl;
+    PlayerStrategyController _strategyControl;
+
+    private bool ulting;
 
     public event Action OnDeath = delegate { };
     public event Action OnJump = delegate { };
     public event Action OnShoot = delegate { };
     public event Action OnStopShooting = delegate { };
+    public event Action<Ulti, bool> OnUlti = delegate { }; //ulti = tipo de ulti, bool = si se activa o desactiva
     public event Action<Unit> OnKill = delegate { };
     public event Action<float, Vector3> OnReceiveDamage = delegate { }; //float vida actual, vector3 direccion
 
@@ -31,6 +35,7 @@ public class Model : MonoBehaviour
         _pointsControl = GetComponent<PlayerPointsController>();
         _shootControl = GetComponent<PlayerShootController>();
         _audioControl = GetComponent<PlayerAudioController>();
+        _strategyControl = GetComponent<PlayerStrategyController>();
     }
 
     private void Start()
@@ -39,6 +44,10 @@ public class Model : MonoBehaviour
 
         OnKill += _pointsControl.KillEnemy;
         OnKill += _adrenalinControl.KillEnemy;
+
+        OnUlti += UIController.Instance.UltiActivation;
+        OnUlti += _adrenalinControl.UltiActivation;
+        OnUlti += _strategyControl.UltiActivation;
 
         OnJump += _moveControl.TryJump;
 
@@ -60,6 +69,20 @@ public class Model : MonoBehaviour
     public void KillEnemy(Unit unitID)
     {
         OnKill(unitID);
+    }
+
+    public void UltiActivation(Ulti ultiID)
+    {
+        if (ulting)
+        {
+            ulting = false;
+        }
+        else
+        {
+            if (_adrenalinControl.CheckUltiActivation()) ulting = true;
+            else Debug.Log("No hay suficiente adrenalina");
+        }
+        OnUlti(ultiID, ulting);
     }
 
     public void Shoot()
@@ -91,6 +114,13 @@ public class Model : MonoBehaviour
         yield return new WaitForSeconds(5);
         Destroy(gameObject);
     }
+}
+
+public enum Ulti
+{
+    AGRESSIVE,
+    PRECISION,
+    REWIND
 }
 
 public enum Unit

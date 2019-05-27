@@ -2255,7 +2255,6 @@ namespace AmplifyShaderEditor
 
 			m_containerGraph.ParentWindow.WireReferenceUtils.OutputPortReference.SetReference( from.NodeId, from.PortId, from.DataType, connection.TypeLocked );
 			m_containerGraph.DeleteConnection( true, UniqueId, port.PortId, true, true );
-			//TODO: check if not necessary
 			Event.current.Use();
 			IsDirty = true;
 			SetSaveIsDirty();

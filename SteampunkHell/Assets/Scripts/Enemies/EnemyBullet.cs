@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class EnemyBullet : Bullet
 {
+    private void Awake()
+    {
+        _currentDistance = VariablesPointer.bulletEnemyState.maxDistance;
+        _bulletSpeed = VariablesPointer.bulletEnemyState.speed;
+        _maxDistance = VariablesPointer.bulletEnemyState.maxDistance;
+        _damage = VariablesPointer.bulletEnemyState.damage;
+        _agressiveness = VariablesPointer.bulletEnemyState.agressiveness;
+    }
     public static void TurnOn(EnemyBullet b)
     {
         b.Reset();

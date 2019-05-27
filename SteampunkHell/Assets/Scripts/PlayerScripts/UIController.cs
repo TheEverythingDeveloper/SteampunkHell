@@ -22,6 +22,12 @@ public class UIController : MonoBehaviour
     public Color shootingColor;
 
     public Image firstUltiImage, secondUltiImage, thirdUltiImage;
+    public Color adrenalinBarNormalColor;
+    public Color adrenalinBarCanUltiColor;
+    public Color[] adrenalineBarUltiColors = new Color[3];
+
+    private Ulti _actualUlti;
+    private bool _ulting; //cuando se esta usando la ulti
 
     private void Awake()
     {
@@ -39,17 +45,42 @@ public class UIController : MonoBehaviour
 
     public void StartShooting()
     {
-        ChangeCursor(CursorState.Shooting);
+        if (_ulting)
+        {
+
+        }
+        else
+        {
+            ChangeCursor(CursorState.Shooting);
+        }
     }
 
     public void StopShooting()
     {
-        //preguntar cosas como si tiene balas, o si esta viendo el enemigo
+        if (_ulting) return;
+
         ChangeCursor(CursorState.Normal);
     }
     
     public void ChangeAdrenalinBar(float newAdrenalin)
     {
+        if (_ulting)
+        {
+            adrenalinBar.color = adrenalineBarUltiColors[(int)_actualUlti];
+        }
+        else
+        {
+            if (newAdrenalin >= 99)
+            {
+                adrenalinBar.color = adrenalinBarCanUltiColor;
+                SwitchCanUlti(true);
+            }
+            else
+            {
+                adrenalinBar.color = adrenalinBarNormalColor;
+                SwitchCanUlti(false);
+            }
+        }
         adrenalinBar.fillAmount = newAdrenalin / 100;
     }
 
@@ -58,19 +89,35 @@ public class UIController : MonoBehaviour
         //TODO: Funcion de puntos apareciendo
     }
 
-    public void UltiActivation(int id)
+    public void SwitchCanUlti(bool on)
     {
-        switch (id)
+        firstUltiImage.gameObject.SetActive(on);
+        secondUltiImage.gameObject.SetActive(on);
+        thirdUltiImage.gameObject.SetActive(on);
+    }
+
+    public void UltiActivation(Ulti ultiType, bool on)
+    {
+        _actualUlti = ultiType;
+        _ulting = on;
+        if (on)
         {
-            case 0:
-                cursorRotationSpeed = 4f;
-                break;
-            case 1:
-                cursorRotationSpeed = -10f;
-                break;
-            case 2:
-                cursorRotationSpeed = 1.5f;
-                break;
+            switch (ultiType)
+            {
+                case Ulti.AGRESSIVE:
+                    cursorRotationSpeed = 4f;
+                    break;
+                case Ulti.PRECISION:
+                    cursorRotationSpeed = -10f;
+                    break;
+                case Ulti.REWIND:
+                    cursorRotationSpeed = 1.5f;
+                    break;
+            }
+        }
+        else
+        {
+            cursorRotationSpeed = 0f;
         }
     }
 
@@ -92,10 +139,6 @@ public class UIController : MonoBehaviour
                 cursorImage.color = shootingColor;
                 cursorRotationSpeed = -4f;
                 break;
-            case CursorState.CantShoot:
-                cursorImage.sprite = shootingCursorSprite;
-                cursorImage.color = shootingColor;
-                break;
         }
     }
 
@@ -114,7 +157,6 @@ public class UIController : MonoBehaviour
 
     IEnumerator ActivateHurtVignette() //Animacion de que aparezca sin animator
     {
-        Debug.Log("se activo la corrutina");
         float t = 0f;
         while(t < 1)
         {
@@ -138,5 +180,4 @@ public enum CursorState
     Normal,
     EnemyInSight,
     Shooting,
-    CantShoot,
 }

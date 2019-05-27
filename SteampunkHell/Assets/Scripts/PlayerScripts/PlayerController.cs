@@ -25,5 +25,19 @@ public class PlayerController : MonoBehaviour
         {
             _model.StopShooting();
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            _model.UltiActivation(Ulti.AGRESSIVE);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            _model.UltiActivation(Ulti.PRECISION);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            _model.UltiActivation(Ulti.REWIND);
+        }
+
     }
 }

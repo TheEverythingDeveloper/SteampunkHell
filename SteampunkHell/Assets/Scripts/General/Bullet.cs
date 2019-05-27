@@ -10,6 +10,11 @@ public abstract class Bullet : MonoBehaviour, IAgressive
 
     protected float _currentDistance;
 
+    protected float _bulletSpeed;
+    protected float _maxDistance;
+    protected float _damage;
+    protected float _agressiveness;
+    
     protected virtual void Reset()
     {
         _currentDistance = 0;
@@ -17,9 +22,9 @@ public abstract class Bullet : MonoBehaviour, IAgressive
 
     protected virtual void Update()
     {
-        transform.position += transform.forward * VariablesPointer.bulletEnemyState.speed * Time.deltaTime;
-        _currentDistance += VariablesPointer.bulletEnemyState.speed * Time.deltaTime;
-        if (_currentDistance > VariablesPointer.bulletEnemyState.maxDistance)
+        transform.position += transform.forward * _bulletSpeed * Time.deltaTime;
+        _currentDistance += _bulletSpeed * Time.deltaTime;
+        if (_currentDistance > _maxDistance)
         {
             ReturnBullet();
         }
@@ -35,9 +40,9 @@ public abstract class Bullet : MonoBehaviour, IAgressive
 
     protected abstract void ReturnBullet();
 
-    public float GetDamage() => VariablesPointer.bulletEnemyState.damage;
+    public float GetDamage() => _damage;
 
-    public float GetAgressiveness() => VariablesPointer.bulletEnemyState.agressiveness;
+    public float GetAgressiveness() => _agressiveness;
 
     public void Hit() => ReturnBullet();
 }

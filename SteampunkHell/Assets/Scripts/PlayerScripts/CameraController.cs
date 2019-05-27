@@ -29,6 +29,11 @@ public class CameraController : MonoBehaviour
         _cameraOffset = _myCam.gameObject.transform.position - transform.position;
     }
 
+    public void ChangeZoom(float newFOV)
+    {
+        _myCam.fieldOfView = newFOV;
+    }
+
     void Update()
     {
         if (GameManager.paused)
@@ -47,13 +52,6 @@ public class CameraController : MonoBehaviour
             rotationX = Mathf.Clamp(rotationX, minimumX, maximumY);
         }
         _myCam.transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
-
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            muteVolume = !muteVolume;
-            AudioListener.pause = muteVolume;
-            AudioListener.volume = muteVolume ? 0 : 1;
-        }
     }
 
     private void LateUpdate()

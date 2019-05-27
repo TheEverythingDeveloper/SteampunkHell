@@ -6,16 +6,20 @@ public class PlayerShootController : MonoBehaviour
 {
     public float shootCD;
     float _totalShootCD;
-    public float bulletSpeed;
-    public float damage;
-    public float agressiveness;
-    public float maxDistance;
     [HideInInspector] public CameraController myCamera;
+    private PlayerStrategyController _strategy;
 
     private void Awake()
     {
+        _strategy = GetComponent<PlayerStrategyController>();
         _totalShootCD = shootCD;
         myCamera = GetComponent<CameraController>();
+    }
+
+    public void ChangeShootCD(float newCD)
+    {
+        _totalShootCD = newCD;
+        shootCD = newCD;
     }
 
     private void Update()
@@ -23,6 +27,7 @@ public class PlayerShootController : MonoBehaviour
         if (shootCD > 0)
         {
             shootCD -= Time.deltaTime;
+            shootCD = Mathf.Clamp(shootCD, 0, 1000);
         }
     }
 
@@ -30,11 +35,7 @@ public class PlayerShootController : MonoBehaviour
     {
         if (shootCD > 0) return;
 
-        var spawnedBullet = BulletSpawner.Instance.GetBulletAt(myCamera._myCam.transform);
-        VariablesPointer.bulletEnemyState.speed = bulletSpeed;
-        VariablesPointer.bulletEnemyState.maxDistance = maxDistance;
-        VariablesPointer.bulletEnemyState.agressiveness = agressiveness;
-        VariablesPointer.bulletEnemyState.damage = damage;
+        _strategy.Shoot();
         shootCD = _totalShootCD;
     }
 }

@@ -22,7 +22,7 @@ public class CollisionController : MonoBehaviour
             otherGo.GetComponent<IAgressive>().Hit();
             _owner.ReceiveDamage(otherGo.GetComponent<IAgressive>().GetDamage(),
                 (transform.position - otherGo.transform.position) * otherGo.GetComponent<IAgressive>().GetAgressiveness()
-                + Vector3.up * (otherGo.GetComponent<IAgressive>().GetAgressiveness() * 1.5f));
+                + Vector3.up * (otherGo.GetComponent<IAgressive>().GetAgressiveness()) * 0.5f);
         }
     }
 

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 8062701074734061913}
   - component: {fileID: 7923975036820567787}
   - component: {fileID: 3336831377320711632}
+  - component: {fileID: 7393764667924964565}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -220,12 +221,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   adrenalin: 0
+  adrenalinLoss: 5
+  adrenalinLossTimeMultiplier: 0.95
+  adrenalinLossTime: 5
+  adrenalinLossCDInUlti: 20
+  ultiLossSpeed: -10
   adrenalinTable:
   - 15
   - 25
   - 10
   - 60
   - 100
+--- !u!114 &7393764667924964565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8062701074734061890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1029dc43bea2b74db40b4bb478c47ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootControl: {fileID: 0}
+  moveControl: {fileID: 0}
 --- !u!1 &8062701074908449895
 GameObject:
   m_ObjectHideFlags: 0
