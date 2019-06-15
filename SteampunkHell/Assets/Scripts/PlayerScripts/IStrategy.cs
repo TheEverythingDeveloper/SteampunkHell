@@ -11,4 +11,6 @@ public interface IStrategy
     void Move();
 
     void Jump();
+
+    float GetReloadSpeed();
 }

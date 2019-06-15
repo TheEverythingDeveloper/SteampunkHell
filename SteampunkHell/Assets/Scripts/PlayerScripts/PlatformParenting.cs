@@ -15,7 +15,7 @@ public class PlatformParenting : MonoBehaviour, IPlatformParenting
         if (other.gameObject.layer == _myLayerMask)
         {
             if (debug)
-                Debug.Log($"Empezo un Platform Parent con {other.name}");
+                Debug.Log("Empezo un Platform Parent con "+other.name);
             parentingTarget = other.gameObject;
             parentingTarget.transform.parent.gameObject.transform.parent = gameObject.transform;
         }
@@ -26,7 +26,7 @@ public class PlatformParenting : MonoBehaviour, IPlatformParenting
         if (other.gameObject == parentingTarget)
         {
             if (debug)
-                Debug.Log($"Platform Parenting... con {other.name}");
+                Debug.Log("Platform Parenting... con "+other.name);
         }
     }
 
@@ -35,7 +35,7 @@ public class PlatformParenting : MonoBehaviour, IPlatformParenting
         if (other.gameObject == parentingTarget)
         {
             if (debug)
-                Debug.Log($"Termino un Platform Parent con {other.name}");
+                Debug.Log("Termino un Platform Parent con "+other.name);
             parentingTarget.transform.parent.gameObject.transform.parent = null;
         }
     }

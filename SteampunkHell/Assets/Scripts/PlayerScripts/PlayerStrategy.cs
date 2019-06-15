@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStrategy : IStrategy
+public class PlayerStrategy
 {
     protected PlayerStrategyController _owner;
     protected float _bulletSpeed;
@@ -30,7 +30,10 @@ public class PlayerStrategy : IStrategy
         _owner.shootControl.ChangeShootCD(_cd);
     }
 
-    public virtual void Shoot() { }
+    public virtual void Shoot()
+    {
+        _owner.ShootCallBack(_bulletSpeed);
+    }
 
     public virtual void Jump()
     {

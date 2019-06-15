@@ -35,7 +35,14 @@ public class PlayerShootController : MonoBehaviour
     {
         if (shootCD > 0) return;
 
-        _strategy.Shoot();
-        shootCD = _totalShootCD;
+        if (!_strategy.CanShoot())
+        {
+            _strategy.Reload();
+        }
+        else
+        {
+            _strategy.Shoot();
+            shootCD = _totalShootCD;
+        }
     }
 }

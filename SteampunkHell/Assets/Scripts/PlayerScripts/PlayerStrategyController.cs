@@ -5,14 +5,16 @@ using UnityEngine;
 [RequireComponent(typeof(MoveController))] [RequireComponent(typeof(PlayerShootController))]
 public class PlayerStrategyController : MonoBehaviour
 {
-    [SerializeField]private IStrategy actualStrategy;
+    [SerializeField]private PlayerStrategy actualStrategy;
 
-    private IStrategy _normalStrategy;
-    private IStrategy _agressiveUltimateStrategy;
-    private IStrategy _precisionUltimateStrategy;
-    private IStrategy _rewindUltimateStrategy;
+    private PlayerStrategy _normalStrategy;
+    private PlayerStrategy _agressiveUltimateStrategy;
+    private PlayerStrategy _precisionUltimateStrategy;
+    private PlayerStrategy _rewindUltimateStrategy;
 
-    private List<IStrategy> _allStrategies = new List<IStrategy>();
+    public Weapon actualWeapon;
+
+    private List<PlayerStrategy> _allStrategies = new List<PlayerStrategy>();
 
     [HideInInspector] public PlayerShootController shootControl;
     [HideInInspector] public MoveController moveControl;
@@ -63,9 +65,24 @@ public class PlayerStrategyController : MonoBehaviour
         actualStrategy.Enter();
     }
 
+    public bool CanShoot()
+    {
+        return actualWeapon.CanShoot();
+    }
+
+    public void Reload()
+    {
+        actualWeapon.Reload();
+    }
+
     public void Shoot()
     {
         actualStrategy.Shoot();
+    }
+
+    public void ShootCallBack(float speed)
+    {
+        actualWeapon.Shoot(speed);
     }
 
     public void Jump()

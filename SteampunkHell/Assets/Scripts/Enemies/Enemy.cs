@@ -38,7 +38,7 @@ public abstract class Enemy : RotationScript /*Hereda las corrutinas de rotacion
     IEnumerator ShootCoroutine()
     {
         if (dead) yield break;
-        yield return new WaitForSeconds(shootCd + Random.Range(-1f,1f));
+        yield return new WaitForSeconds(shootCd + Random.Range(-1f, 1f));
         Shoot();
         StartCoroutine(ShootCoroutine());
     }
@@ -79,8 +79,14 @@ public abstract class Enemy : RotationScript /*Hereda las corrutinas de rotacion
     protected abstract void Shoot();
     protected abstract void DeathFeedback();
 
-    public float GetDamage() => bulletDamage; //si el jugador lo toca le va a sacar vida y empujar
-    public float GetAgressiveness() => agressiveness; //cuanto va a empujar al player cuando lo toca
+    public float GetDamage()//si el jugador lo toca le va a sacar vida y empujar
+    {
+        return bulletDamage;
+    }
+    public float GetAgressiveness() //cuanto va a empujar al player cuando lo toca
+    {
+        return agressiveness;
+    }
 
     public void Hit() { /*TODO: Feedback del enemigo al pegarte*/ }
 }

@@ -27,6 +27,7 @@ public class NormalStrategy : PlayerStrategy
 
     public override void Shoot()
     {
+        base.Shoot();
         Debug.Log("normal shoot");
         BulletSpawner.Instance.GetBulletAt(_owner.GetComponent<CameraController>()._myCam.transform);
     }

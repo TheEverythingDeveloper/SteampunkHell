@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audios: []
+  muteVolume: 0
 --- !u!114 &6331719983435363180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,11 +74,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootCD: 0.3
-  bulletSpeed: 30
-  damage: 5
-  agressiveness: 5
-  maxDistance: 70
   myCamera: {fileID: 0}
+  reloadAmount: 3
 --- !u!1 &2693628188540880093
 GameObject:
   m_ObjectHideFlags: 0

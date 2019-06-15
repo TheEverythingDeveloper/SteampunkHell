@@ -80,5 +80,8 @@ public class PlayerAdrenalinController : MonoBehaviour
         ChangeAdrenalin(-adrenalinLoss);
         StartCoroutine(AdrenalinLossCoroutine());
     }
-    public bool CheckUltiActivation() => adrenalin > 99;
+    public bool CheckUltiActivation()
+    {
+        return adrenalin > 99;
+    }
 }

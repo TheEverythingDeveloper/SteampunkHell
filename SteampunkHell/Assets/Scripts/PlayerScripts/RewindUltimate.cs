@@ -21,6 +21,7 @@ public class RewindUltimate : PlayerStrategy
 
     public override void Shoot()
     {
+        _owner.ShootCallBack(_bulletSpeed);
         Debug.Log("rewind shoot");
         BulletSpawner.Instance.GetBulletAt(_owner.GetComponent<CameraController>()._myCam.transform);
     }

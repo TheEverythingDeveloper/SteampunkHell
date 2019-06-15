@@ -51,8 +51,20 @@ public class BuilderCharacter
         return this;
     }
 
-    public int GetLife() => _life;
-    public string GetName() => _name;
-    public Prof GetProf() => _currentProf;
-    public Color GetColor() => _col;
+    public int GetLife()
+    {
+        return _life;
+    }
+    public string GetName()
+    {
+        return _name;
+    }
+    public Prof GetProf()
+    {
+        return _currentProf;
+    }
+    public Color GetColor()
+    {
+        return _col;
+    }
 }

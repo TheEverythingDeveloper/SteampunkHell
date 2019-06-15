@@ -40,9 +40,18 @@ public abstract class Bullet : MonoBehaviour, IAgressive
 
     protected abstract void ReturnBullet();
 
-    public float GetDamage() => _damage;
+    public float GetDamage()
+    {
+        return _damage;
+    }
 
-    public float GetAgressiveness() => _agressiveness;
+    public float GetAgressiveness()
+    {
+        return _agressiveness;
+    }
 
-    public void Hit() => ReturnBullet();
+    public void Hit()
+    {
+        ReturnBullet();
+    }
 }

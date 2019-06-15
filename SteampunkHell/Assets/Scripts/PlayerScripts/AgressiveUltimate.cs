@@ -21,6 +21,7 @@ public class AgressiveUltimate : PlayerStrategy
 
     public override void Shoot()
     {
+        _owner.ShootCallBack(_bulletSpeed);
         Debug.Log("agressive shoot");
         Transform originalTransform = _owner.GetComponent<CameraController>()._myCam.transform;
         BulletSpawner.Instance.GetBulletAt(originalTransform);
