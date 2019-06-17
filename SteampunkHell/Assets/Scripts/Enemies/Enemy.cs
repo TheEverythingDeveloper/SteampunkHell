@@ -28,6 +28,7 @@ public abstract class Enemy : RotationScript /*Hereda las corrutinas de rotacion
         _totalLife = life;
         _rb = GetComponent<Rigidbody>();
         _player = FindObjectOfType<Model>();
+        FindObjectOfType<GameManager>().enemiesActive.Add(gameObject);
     }
 
     protected virtual void Start()

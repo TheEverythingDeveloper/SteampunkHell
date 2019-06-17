@@ -15,4 +15,5 @@ public class DebugController : MonoBehaviour
         _UIGo.SetActive(true);
         _EnemiesGo.SetActive(enemies);
     }
+
 }
