@@ -88,7 +88,6 @@ public class Model : MonoBehaviour
     public void Shoot()
     {
         OnShoot();
-        _audioControl.MakeSound(4); //TODO: poner aca el numero del sonido de shoot
     }
 
     public void StopShooting()

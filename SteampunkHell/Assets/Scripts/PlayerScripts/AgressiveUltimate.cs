@@ -23,12 +23,15 @@ public class AgressiveUltimate : PlayerStrategy
     {
         _owner.ShootCallBack(_bulletSpeed);
         Debug.Log("agressive shoot");
-        Transform originalTransform = _owner.GetComponent<CameraController>()._myCam.transform;
-        BulletSpawner.Instance.GetBulletAt(originalTransform);
-        originalTransform.Rotate(Vector3.up, 20);
-        BulletSpawner.Instance.GetBulletAt(originalTransform);
-        originalTransform.Rotate(Vector3.up, -40);
-        BulletSpawner.Instance.GetBulletAt(originalTransform);
-        originalTransform.Rotate(Vector3.up, 20);
+        for (int i = 0; i < _owner.actualWeapon.spawnBulletsTransforms.Length; i++)
+        {
+            Transform originalTransform = _owner.actualWeapon.spawnBulletsTransforms[i];
+            BulletSpawner.Instance.GetBulletAt(originalTransform);
+            originalTransform.Rotate(Vector3.up, 20);
+            BulletSpawner.Instance.GetBulletAt(originalTransform);
+            originalTransform.Rotate(Vector3.up, -40);
+            BulletSpawner.Instance.GetBulletAt(originalTransform);
+            originalTransform.Rotate(Vector3.up, 20);
+        }
     }
 }
