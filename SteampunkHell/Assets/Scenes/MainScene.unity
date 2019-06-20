@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.4964127, b: 0.57481724, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -922,6 +922,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &165933835
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 165933836}
+  m_Layer: 0
+  m_Name: SpawnBullets
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &165933836
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165933835}
+  m_LocalRotation: {x: -2.3283059e-10, y: -0.7071064, z: -7.785273e-10, w: 0.7071071}
+  m_LocalPosition: {x: -0.5130047, y: 0.072000094, z: 0.0000019800716}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1749105201}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 0}
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -3401,7 +3431,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15228
+  m_Name: pb_Mesh15376
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -3593,6 +3623,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2693628188846403219}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &736230425 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2173467678994859842, guid: 1e3a758184eda3541aab5a8f37581cb8,
+    type: 3}
+  m_PrefabInstance: {fileID: 2693628188846403219}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736230421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50a99c004b490734e9d8fb454b8086d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &736230437
 AudioSource:
   m_ObjectHideFlags: 0
@@ -16784,14 +16826,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1428150020}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.034, y: -0.076, z: 0.136}
+  m_LocalRotation: {x: -0, y: -0.03395275, z: -0, w: 0.99942344}
+  m_LocalPosition: {x: 0.040740028, y: -0.07600021, z: 0.12954998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1749105201}
   m_Father: {fileID: 446205324}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -3.8910003, z: 0}
 --- !u!4 &1434602878 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1434602878, guid: 272e42994aa193f498ad62123a6bad20,
@@ -20077,6 +20119,7 @@ Transform:
   m_Children:
   - {fileID: 1749105203}
   - {fileID: 1749105205}
+  - {fileID: 165933836}
   m_Father: {fileID: 1428150021}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0.003, y: 93.59801, z: 0.402}
@@ -20177,6 +20220,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reloadAmount: 3
   reloadSpeed: 1
+  audioController: {fileID: 736230425}
+  spawnBulletsTransforms:
+  - {fileID: 165933836}
 --- !u!1 &1749460501
 GameObject:
   m_ObjectHideFlags: 0
@@ -20291,7 +20337,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15050
+  m_Name: pb_Mesh15192
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -25381,7 +25427,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _UIGo: {fileID: 2000848059}
   _EnemiesGo: {fileID: 1917436301}
-  enemies: 0
+  enemies: 1
 --- !u!4 &2024639154
 Transform:
   m_ObjectHideFlags: 0

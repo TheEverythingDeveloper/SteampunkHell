@@ -23,6 +23,9 @@ public class RewindUltimate : PlayerStrategy
     {
         _owner.ShootCallBack(_bulletSpeed);
         Debug.Log("rewind shoot");
-        BulletSpawner.Instance.GetBulletAt(_owner.GetComponent<CameraController>()._myCam.transform);
+        for (int i = 0; i < _owner.actualWeapon.spawnBulletsTransforms.Length; i++)
+        {
+            BulletSpawner.Instance.GetBulletAt(_owner.actualWeapon.spawnBulletsTransforms[i]);
+        }
     }
 }

@@ -9,6 +9,8 @@ public class Weapon : MonoBehaviour
     protected int _totalReload;
     public float reloadSpeed;
     protected bool _reloading;
+    public PlayerAudioController audioController;
+    public Transform[] spawnBulletsTransforms;
 
     public virtual bool CanShoot()
     {
@@ -25,6 +27,7 @@ public class Weapon : MonoBehaviour
     /// </summary>
     public virtual void Shoot(float speed)
     {
+        audioController.MakeSound(4); 
         reloadAmount--;
         _anim.speed = speed * 0.1f;
         _anim.SetTrigger("Shoot");

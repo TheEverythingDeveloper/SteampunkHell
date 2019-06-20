@@ -19,7 +19,7 @@ public class BulletSpawner : MonoBehaviour
     {
         var b = pool.GetObject();
         b.transform.position = targetTransform.position;
-        b.transform.localRotation = targetTransform.localRotation;
+        b.transform.localRotation = targetTransform.rotation;
         return b;
     }
 
