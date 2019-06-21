@@ -6,7 +6,13 @@ public class EnemyExplosive : Enemy
 {
     float _dist;
     bool _exploitActive;
-    
+
+    protected override void Reset()
+    {
+        life = _totalLife;
+        dead = false;
+    }
+
     private void Update()
     {
         if (dead || _exploitActive) return;
@@ -14,7 +20,7 @@ public class EnemyExplosive : Enemy
         _dist = Vector3.Distance(_player.gameObject.transform.position, transform.position);
 
         if (_dist < 2)
-            StartCoroutine(Exploit()); 
+            Shoot();
         else
             Chase();
 
@@ -30,7 +36,7 @@ public class EnemyExplosive : Enemy
                 + Vector3.up * (agressiveness * 1.5f));
         }
         ReturnEnemy();
-        FindObjectOfType<StagesManager>().CheckEnemiesState();
+        FindObjectOfType<WaveManager>().CheckEnemiesState();
         DeathFeedback();
     }
     void Chase()
@@ -45,13 +51,13 @@ public class EnemyExplosive : Enemy
 
     protected override void Shoot()
     {
-        Debug.Log("No deberia");
+        StartCoroutine(Exploit());
     }
 
     public static void TurnOn(EnemyExplosive b)
     {
-        b.Reset();
         b.gameObject.SetActive(true);
+        b.Reset();
     }
 
     public static void TurnOff(EnemyExplosive b)

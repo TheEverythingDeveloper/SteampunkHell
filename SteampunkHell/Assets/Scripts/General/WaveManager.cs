@@ -6,9 +6,9 @@ using TMPro;
 
 using Random = UnityEngine.Random;
 
-public class StagesManager : MonoBehaviour
+public class WaveManager : MonoBehaviour
 {
-    public static StagesManager Instance
+    public static WaveManager Instance
     {
         get
         {
@@ -16,7 +16,7 @@ public class StagesManager : MonoBehaviour
         }
     }
 
-    private static StagesManager _Instance;
+    private static WaveManager _Instance;
 
     public TextMeshProUGUI textStage;
 
@@ -36,6 +36,7 @@ public class StagesManager : MonoBehaviour
     }
     void Start()
     {
+        EventsManager.SubscribeToEvent(TypeOfEvent.EnemyDead, CheckEnemiesState);
         AddStages();
         textStage.text = "Press enter to start stage " + (_actualStage + 1);
     }
@@ -50,16 +51,16 @@ public class StagesManager : MonoBehaviour
         allStages.Add(Stage6);
     }
 
-    public void NewState()
+    public void NewStage()
     {
         if (waveActive)
             return;
 
+        EventsManager.TriggerEvent(TypeOfEvent.NewWave);
         waveActive = true;
         _actualStage++;
         initialEnemiesStage++;
         textStage.text = "Stage " + _actualStage;
-        GateSystem.Instance.doorsActive = new List<GameObject>();
         allStages[CheckStage()]();
         Debug.Log("Oleada " + _actualStage + ". Con " + _actualEnemiesActive + " enemigos");
     }
@@ -74,7 +75,7 @@ public class StagesManager : MonoBehaviour
         }
             return 0;
     }
-    public void CheckEnemiesState()
+    public void CheckEnemiesState(params object[] parameters)
     {
         _actualEnemiesActive--;
         Debug.Log("Faltan matar: " + _actualEnemiesActive + " enemigos");

@@ -20,4 +20,14 @@ public class GateSystem : MonoBehaviour
     {
         _Instance = this;
     }
+    private void Start()
+    {
+        EventsManager.SubscribeToEvent(TypeOfEvent.NewWave, ActivateStage);
+    }
+
+    public void ActivateStage(params object[] parameters)
+    {
+        //TODO: Activar puertas
+        doorsActive = new List<GameObject>();
+    }
 }

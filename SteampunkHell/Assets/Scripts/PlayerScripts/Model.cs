@@ -50,6 +50,7 @@ public class Model : MonoBehaviour
     {
         OnDeath += _lifeControl.PlayerDie;
 
+        EventsManager.SubscribeToEvent(TypeOfEvent.EnemyDead, KillEnemy);
         OnKill += _pointsControl.KillEnemy;
         OnKill += _adrenalinControl.KillEnemy;
 
@@ -91,9 +92,9 @@ public class Model : MonoBehaviour
         _audioControl.MakeSound(5); //TODO: Poner aca el numero del sonido de que te pegaron
     }
 
-    public void KillEnemy(Unit unitID)
+    public void KillEnemy(params object[] parameters)
     {
-        OnKill(unitID);
+        OnKill((Unit)parameters[0]);
     }
 
     public void UltiActivation(Ulti ultiID)
@@ -133,7 +134,7 @@ public class Model : MonoBehaviour
 
     public void StartStage()
     {
-        StagesManager.Instance.NewState();
+        WaveManager.Instance.NewStage();
     }
     public void StartShopping()
     {

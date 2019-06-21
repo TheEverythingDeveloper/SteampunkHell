@@ -70,8 +70,6 @@ public class EventsManager
 /// </summary>
 public enum TypeOfEvent
 {
-    GP_CriticalHit,
-    GP_HeroDefeated,
-    GP_EnemyDefeated,
-    GP_HeroLifeModified
+    EnemyDead,
+    NewWave
 }

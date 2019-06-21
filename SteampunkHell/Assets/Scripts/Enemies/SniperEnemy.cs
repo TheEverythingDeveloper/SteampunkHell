@@ -20,6 +20,14 @@ public class SniperEnemy : Enemy
         _totalAimCD = aimCD;
     }
 
+    protected override void Reset()
+    {
+        base.Reset();
+        _sniperLine.enabled = true;
+        aimCD = _totalAimCD;
+
+    }
+
     protected override void Start()
     {
         base.Start();
@@ -72,8 +80,8 @@ public class SniperEnemy : Enemy
 
     public static void TurnOn(SniperEnemy b)
     {
-        b.Reset();
         b.gameObject.SetActive(true);
+        b.Reset();
     }
 
     public static void TurnOff(SniperEnemy b)

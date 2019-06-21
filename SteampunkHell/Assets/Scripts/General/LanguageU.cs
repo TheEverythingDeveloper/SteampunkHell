@@ -27,7 +27,7 @@ public class LanguageU
             //Sumamos para saber que estamos en la primera linea
             lineNum++;
             //Separamos por columna al encontrar un ";"...tambien se toma la ","
-            var cells = row.Split(';');
+            var cells = row.Split(',');
 
             //Si es la primera linea 
             if (first)
@@ -44,6 +44,7 @@ public class LanguageU
                 Debug.Log(string.Format("Parsing CSV file {2} at line {0} columns {1} should be 4", lineNum, cells.Length, source));
                 continue;
             }
+
             var langName = cells[columnToIndex["Idioma"]];//Le decimos que tome el valor de la columna que se encuentra en Idioma
 
             Language lang;

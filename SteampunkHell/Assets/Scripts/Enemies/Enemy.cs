@@ -32,22 +32,27 @@ public abstract class Enemy : RotationScript /*Hereda las corrutinas de rotacion
 
     protected virtual void Start()
     {
-        StartCoroutine(ShootCoroutine());
+        /*StartCoroutine(ShootCoroutine());*/
     }
 
     protected virtual void Reset()
     {
         life = _totalLife;
         dead = false;
+        StartCoroutine(ShootCoroutine());
         //TODO: Aca reinicia todo
     }
 
     IEnumerator ShootCoroutine()
     {
-        if (dead) yield break;
-        yield return new WaitForSeconds(shootCd + Random.Range(-1f, 1f));
-        Shoot();
-        StartCoroutine(ShootCoroutine());
+        Debug.Log("se llamo");
+        while (true)
+        {
+            //if (dead) yield break;
+            yield return new WaitForSeconds(shootCd + Random.Range(-1f, 1f));
+            Shoot();
+            yield return new WaitForEndOfFrame();
+        }
     }
 
     public bool ReceiveDamage(float amount, Vector3 pushForce)
@@ -67,9 +72,8 @@ public abstract class Enemy : RotationScript /*Hereda las corrutinas de rotacion
     {
         if (dead) return;
         dead = true;
-        _player.KillEnemy(unitType);
+        EventsManager.TriggerEvent(TypeOfEvent.EnemyDead, unitType);
         ReturnEnemy();
-        FindObjectOfType<StagesManager>().CheckEnemiesState();
         DeathFeedback();
         //TODO: Volver al pool o algo asi
     }
