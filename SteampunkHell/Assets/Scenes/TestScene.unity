@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.4964127, b: 0.57481724, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2742,7 +2742,7 @@ GameObject:
   - component: {fileID: 530883739}
   - component: {fileID: 530883738}
   m_Layer: 5
-  m_Name: TextStates
+  m_Name: TextStages
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4244,7 +4244,7 @@ PrefabInstance:
     - target: {fileID: 5253606869714067321, guid: 7110b06fcc3be52419e2d3fd12e7013a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5253606869714067321, guid: 7110b06fcc3be52419e2d3fd12e7013a,
         type: 3}
@@ -4661,7 +4661,7 @@ Transform:
   m_Children:
   - {fileID: 1304717463}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &915862555
 MonoBehaviour:
@@ -8225,7 +8225,7 @@ Transform:
   - {fileID: 1670850672}
   - {fileID: 625975941}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1077053626
 MonoBehaviour:
@@ -18151,16 +18151,6 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 101493791}
-    - target: {fileID: 238277620750835866, guid: bbeb3a7d26e856e48bf4c588ac1e91eb,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 238277620750835866, guid: bbeb3a7d26e856e48bf4c588ac1e91eb,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 238277619853746785, guid: bbeb3a7d26e856e48bf4c588ac1e91eb,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -18171,6 +18161,36 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -0.79999924
       objectReference: {fileID: 0}
+    - target: {fileID: 238277620750835866, guid: bbeb3a7d26e856e48bf4c588ac1e91eb,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 238277620750835866, guid: bbeb3a7d26e856e48bf4c588ac1e91eb,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8687511177033996740, guid: bbeb3a7d26e856e48bf4c588ac1e91eb,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8687511177033996740, guid: bbeb3a7d26e856e48bf4c588ac1e91eb,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175262774058683455, guid: bbeb3a7d26e856e48bf4c588ac1e91eb,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175262774058683455, guid: bbeb3a7d26e856e48bf4c588ac1e91eb,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 238277619853746790, guid: bbeb3a7d26e856e48bf4c588ac1e91eb,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -18187,26 +18207,6 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8564831564410526876, guid: bbeb3a7d26e856e48bf4c588ac1e91eb,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7175262774058683455, guid: bbeb3a7d26e856e48bf4c588ac1e91eb,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7175262774058683455, guid: bbeb3a7d26e856e48bf4c588ac1e91eb,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8687511177033996740, guid: bbeb3a7d26e856e48bf4c588ac1e91eb,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8687511177033996740, guid: bbeb3a7d26e856e48bf4c588ac1e91eb,
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
@@ -23213,8 +23213,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62fb0a83c015e0e4a913f039ac6b2898, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textState: {fileID: 530883738}
-  initialEnemiesState: 3
+  textStage: {fileID: 530883738}
+  initialEnemiesStage: 2
   stages: 04000000080000000c000000
 --- !u!114 &2024639157
 MonoBehaviour:
