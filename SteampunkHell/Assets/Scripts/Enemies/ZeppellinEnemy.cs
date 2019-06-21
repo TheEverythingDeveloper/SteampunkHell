@@ -24,4 +24,20 @@ public class ZeppellinEnemy : Enemy
     {
 
     }
+
+    public static void TurnOn(ZeppellinEnemy b)
+    {
+        b.Reset();
+        b.gameObject.SetActive(true);
+    }
+
+    public static void TurnOff(ZeppellinEnemy b)
+    {
+        b.gameObject.SetActive(false);
+    }
+
+    protected override void ReturnEnemy()
+    {
+        EnemySpawner.Instance.ReturnEnemy(this);
+    }
 }

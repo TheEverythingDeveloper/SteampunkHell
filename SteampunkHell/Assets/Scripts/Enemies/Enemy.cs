@@ -28,12 +28,18 @@ public abstract class Enemy : RotationScript /*Hereda las corrutinas de rotacion
         _totalLife = life;
         _rb = GetComponent<Rigidbody>();
         _player = FindObjectOfType<Model>();
-        FindObjectOfType<GameManager>().enemiesActive.Add(gameObject);
     }
 
     protected virtual void Start()
     {
         StartCoroutine(ShootCoroutine());
+    }
+
+    protected virtual void Reset()
+    {
+        life = _totalLife;
+        dead = false;
+        //TODO: Aca reinicia todo
     }
 
     IEnumerator ShootCoroutine()
@@ -62,6 +68,8 @@ public abstract class Enemy : RotationScript /*Hereda las corrutinas de rotacion
         if (dead) return;
         dead = true;
         _player.KillEnemy(unitType);
+        ReturnEnemy();
+        FindObjectOfType<StatesManager>().CheckEnemiesState();
         DeathFeedback();
         //TODO: Volver al pool o algo asi
     }
@@ -79,6 +87,7 @@ public abstract class Enemy : RotationScript /*Hereda las corrutinas de rotacion
 
     protected abstract void Shoot();
     protected abstract void DeathFeedback();
+    protected abstract void ReturnEnemy();
 
     public float GetDamage()//si el jugador lo toca le va a sacar vida y empujar
     {

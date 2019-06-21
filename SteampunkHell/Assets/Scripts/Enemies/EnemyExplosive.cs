@@ -29,6 +29,8 @@ public class EnemyExplosive : Enemy
                 (_player.gameObject.transform.position - transform.position) * agressiveness
                 + Vector3.up * (agressiveness * 1.5f));
         }
+        ReturnEnemy();
+        FindObjectOfType<StatesManager>().CheckEnemiesState();
         DeathFeedback();
     }
     void Chase()
@@ -38,7 +40,7 @@ public class EnemyExplosive : Enemy
     }
     protected override void DeathFeedback()
     {
-        gameObject.SetActive(false);
+       // gameObject.SetActive(false);
     }
 
     protected override void Shoot()
@@ -46,4 +48,19 @@ public class EnemyExplosive : Enemy
         Debug.Log("No deberia");
     }
 
+    public static void TurnOn(EnemyExplosive b)
+    {
+        b.Reset();
+        b.gameObject.SetActive(true);
+    }
+
+    public static void TurnOff(EnemyExplosive b)
+    {
+        b.gameObject.SetActive(false);
+    }
+
+    protected override void ReturnEnemy()
+    {
+        EnemySpawner.Instance.ReturnEnemy(this);
+    }
 }
