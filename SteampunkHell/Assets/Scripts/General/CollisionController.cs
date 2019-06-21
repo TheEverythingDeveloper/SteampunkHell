@@ -8,10 +8,14 @@ public class CollisionController : MonoBehaviour
 
     IVulnerable _owner;
     public LayerMask IAgressiveLayers;
+    public LayerMask interactableLayers;
+
+    [SerializeField] private ShopMachine _actualShopMachine;
 
     private void Awake()
     {
         _owner = GetComponent<IVulnerable>();
+        _model = GetComponent<Model>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,10 +28,32 @@ public class CollisionController : MonoBehaviour
                 (transform.position - otherGo.transform.position) * otherGo.GetComponent<IAgressive>().GetAgressiveness()
                 + Vector3.up * (otherGo.GetComponent<IAgressive>().GetAgressiveness()) * 0.5f);
         }
+        if (((1 << otherGo.layer) & interactableLayers) != 0)
+        {
+            _model.CanShop(true);
+            _actualShopMachine = otherGo.GetComponent<ShopMachine>();
+        }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
+        GameObject otherGo = other.gameObject;
+        if (((1 << otherGo.layer) & interactableLayers) != 0)
+        { 
+            _actualShopMachine = null;
+            _model.CanShop(false);
+        }
+    }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if(_actualShopMachine != null)
+            {
+                _actualShopMachine.PlayerEnter(_model);
+                _model.StartShopping();
+            }
+        }
     }
 }

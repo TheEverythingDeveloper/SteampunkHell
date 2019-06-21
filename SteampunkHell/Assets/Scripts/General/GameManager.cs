@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     public int initialEnemiesState;
     public int state;
 
+    public bool canPause;
+
     private void Awake()
     {
         Instance = this;
@@ -31,11 +33,17 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Paused();
+            StartCoroutine(DelayPause());
         }
+    }
+
+    IEnumerator DelayPause()
+    {
+        yield return new WaitForSeconds(0.1f);
+        if (canPause)
+            Paused();
     }
     public void CheckState()
     {

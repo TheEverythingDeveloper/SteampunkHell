@@ -12,6 +12,7 @@ public class MoveController : MonoBehaviour
     [SerializeField] private float _gravityMultiplier = 2;
     private bool _isGrounded;
     public bool canMove;
+    public bool canJump = true;
     Rigidbody _rb;
 
     private void Awake()
@@ -29,9 +30,14 @@ public class MoveController : MonoBehaviour
         _rb.AddForce(pushForce, ForceMode.Impulse);
     }
 
+    public void EnterShop(bool enter)
+    {
+        canJump = !enter;
+    }
+
     public void TryJump()
     {
-        if (!_isGrounded) return;
+        if (!_isGrounded || !canJump) return;
 
         GetComponent<PlayerAudioController>().MakeSound(0);
         _rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z);

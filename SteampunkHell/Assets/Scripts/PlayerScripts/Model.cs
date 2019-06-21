@@ -7,6 +7,7 @@ public class Model : MonoBehaviour
 {
     PlayerController _controller;
     View _view;
+    [HideInInspector] public CameraController cameraControl;
     MoveController _moveControl;
     PlayerLifeController _lifeControl;
     PlayerAdrenalinController _adrenalinControl;
@@ -25,9 +26,15 @@ public class Model : MonoBehaviour
     public event Action<Unit> OnKill = delegate { };
     public event Action<float, Vector3> OnReceiveDamage = delegate { }; //float vida actual, vector3 direccion
 
+    public event Action<bool> OnCanShop = delegate { }; //TODO: Feedback puede comprar.
+    public event Action OnStartShopping = delegate { }; //TODO: Feedback cuando empieza a comprar
+    public event Action OnEndShopping = delegate { }; //TODO: Feedback cuando termina de comprar
+
     private void Awake()
     {
         _controller = GetComponent<PlayerController>();
+        cameraControl = GetComponent<CameraController>();
+
         _view = GetComponent<View>();
         _moveControl = GetComponent<MoveController>();
         _lifeControl = GetComponent<PlayerLifeController>();
@@ -58,6 +65,9 @@ public class Model : MonoBehaviour
         OnShoot += UIController.Instance.StartShooting;
 
         OnStopShooting += UIController.Instance.StopShooting;
+
+        OnCanShop += _moveControl.EnterShop;
+        //TODO: OnCanShop += _view.CanShop;
     }
 
     public void ReceiveDamage(float x, Vector3 vectorx)
@@ -99,6 +109,21 @@ public class Model : MonoBehaviour
     {
         OnJump();
         _audioControl.MakeSound(3); //TODO: poner aca el numero del sonido de salto
+    }
+
+    public void CanShop(bool enter)
+    {
+        OnCanShop(enter);
+    }
+
+    public void StartShopping()
+    {
+        OnStartShopping();
+    }
+
+    public void EndShopping()
+    {
+        OnEndShopping();
     }
 
     public void Death() 

@@ -12,7 +12,7 @@ public class NormalStrategy : PlayerStrategy
     public override void Enter()
     {
         base.Enter();
-        _owner.GetComponent<CameraController>().ChangeZoom(60);
+        _owner.GetComponent<CameraController>().ChangeZoom(50);
     }
 
     public override void Jump()
