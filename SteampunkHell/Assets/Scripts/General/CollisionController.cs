@@ -32,6 +32,7 @@ public class CollisionController : MonoBehaviour
         {
             _model.CanShop(true);
             _actualShopMachine = otherGo.GetComponent<ShopMachine>();
+            _actualShopMachine.PlayerOnTrigger(true);
         }
     }
 
@@ -40,6 +41,7 @@ public class CollisionController : MonoBehaviour
         GameObject otherGo = other.gameObject;
         if (((1 << otherGo.layer) & interactableLayers) != 0)
         { 
+            _actualShopMachine.PlayerOnTrigger(false);
             _actualShopMachine = null;
             _model.CanShop(false);
         }

@@ -17,6 +17,7 @@ public class Model : MonoBehaviour
     PlayerStrategyController _strategyControl;
 
     private bool ulting;
+    public bool isShopping;
 
     public event Action OnDeath = delegate { };
     public event Action OnJump = delegate { };
@@ -32,7 +33,7 @@ public class Model : MonoBehaviour
 
     private void Awake()
     {
-        _controller = GetComponent<PlayerController>();
+        _controller = new PlayerController(this);
         cameraControl = GetComponent<CameraController>();
 
         _view = GetComponent<View>();
@@ -68,6 +69,20 @@ public class Model : MonoBehaviour
 
         OnCanShop += _moveControl.EnterShop;
         //TODO: OnCanShop += _view.CanShop;
+    }
+
+    private void Update()
+    {
+        if (isShopping || GameManager.paused) return;
+
+        _controller.ArtificialUpdate();
+    }
+
+    private void FixedUpdate()
+    {
+        if (isShopping || GameManager.paused) return;
+
+        _moveControl.ArtificialFixedUpdate();
     }
 
     public void ReceiveDamage(float x, Vector3 vectorx)
@@ -119,11 +134,13 @@ public class Model : MonoBehaviour
     public void StartShopping()
     {
         OnStartShopping();
+        //isShopping = true;
     }
 
     public void EndShopping()
     {
         OnEndShopping();
+        //isShopping = false;
     }
 
     public void Death() 

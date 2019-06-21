@@ -59,10 +59,8 @@ public class MoveController : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    public void ArtificialFixedUpdate()
     {
-        if (GameManager.paused) return;
-
         var newForward = GetComponent<CameraController>()._myCam.transform.forward;
         transform.forward = new Vector3(newForward.x, 0, newForward.z);
 

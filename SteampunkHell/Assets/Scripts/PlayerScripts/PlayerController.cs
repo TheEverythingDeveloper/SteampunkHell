@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController
 {
     Model _model;
+    
 
-    private void Awake()
+    public PlayerController(Model model)
     {
-        _model = GetComponent<Model>();
+        _model = model;
     }
 
-    public void Update()
+    public void ArtificialUpdate()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
             _model.StopShooting();
         }
 
+        //Seleccion de ultis
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             _model.UltiActivation(Ulti.AGRESSIVE);
@@ -38,6 +40,5 @@ public class PlayerController : MonoBehaviour
         {
             _model.UltiActivation(Ulti.REWIND);
         }
-
     }
 }
