@@ -10,24 +10,9 @@ public abstract class Bullet : MonoBehaviour, IAgressive
 
     protected float _currentDistance;
 
-    protected float _bulletSpeed;
-    protected float _maxDistance;
-    protected float _damage;
-    protected float _agressiveness;
-    
     protected virtual void Reset()
     {
         _currentDistance = 0;
-    }
-
-    protected virtual void Update()
-    {
-        transform.position += transform.forward * _bulletSpeed * Time.deltaTime;
-        _currentDistance += _bulletSpeed * Time.deltaTime;
-        if (_currentDistance > _maxDistance)
-        {
-            ReturnBullet();
-        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -39,16 +24,8 @@ public abstract class Bullet : MonoBehaviour, IAgressive
     }
 
     protected abstract void ReturnBullet();
-
-    public float GetDamage()
-    {
-        return _damage;
-    }
-
-    public float GetAgressiveness()
-    {
-        return _agressiveness;
-    }
+    public abstract float GetDamage();
+    public abstract float GetAgressiveness();
 
     public void Hit()
     {
