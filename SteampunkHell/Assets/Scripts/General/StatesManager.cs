@@ -15,7 +15,6 @@ public class StatesManager : MonoBehaviour
 
     int _actualEnemiesActive;
 
-    public List<Transform> doors;
     public List<Action> allStages = new List<Action>();
     public int[] stages;
     void Start()
@@ -39,6 +38,7 @@ public class StatesManager : MonoBehaviour
         _state++;
         initialEnemiesState++;
         textState.text = "State " + _state;
+        GateSystem.Instance.doorsActive = new List<GameObject>();
         allStages[CheckStage()]();
         Debug.Log("Oleada " + _state + ". Con " + _actualEnemiesActive + " enemigos");
     }
@@ -64,8 +64,9 @@ public class StatesManager : MonoBehaviour
     {
         for (int i = 0; i < initialEnemiesState; i++)
         {
-            var numberDoor = Random.Range(0, doors.Count - 1);
-            EnemySpawner.Instance.GetEnemySniper(doors[numberDoor]);
+            var numberDoor = Random.Range(0, GateSystem.Instance.doors.Count - 1);
+            GateSystem.Instance.doorsActive.Add(GateSystem.Instance.doors[numberDoor].gameObject);
+            EnemySpawner.Instance.GetEnemySniper(GateSystem.Instance.doors[numberDoor]);
             _actualEnemiesActive++;
         }
     }
@@ -73,13 +74,14 @@ public class StatesManager : MonoBehaviour
     {
         for (int i = 0; i < initialEnemiesState; i++)
         {
-            var numberDoor = Random.Range(0, doors.Count - 1);
+            var numberDoor = Random.Range(0, GateSystem.Instance.doors.Count - 1);
+            GateSystem.Instance.doorsActive.Add(GateSystem.Instance.doors[numberDoor].gameObject);
             var selectEnemy = Random.Range(1, 4);
 
             if (selectEnemy == 1)
-                EnemySpawner.Instance.GetEnemyExplosive(doors[numberDoor]);
+                EnemySpawner.Instance.GetEnemyExplosive(GateSystem.Instance.doors[numberDoor]);
             else
-                EnemySpawner.Instance.GetEnemySniper(doors[numberDoor]);
+                EnemySpawner.Instance.GetEnemySniper(GateSystem.Instance.doors[numberDoor]);
 
             _actualEnemiesActive++;
         }
@@ -88,13 +90,14 @@ public class StatesManager : MonoBehaviour
     {
         for (int i = 0; i < initialEnemiesState; i++)
         {
-            var numberDoor = Random.Range(0, doors.Count - 1);
+            var numberDoor = Random.Range(0, GateSystem.Instance.doors.Count - 1);
+            GateSystem.Instance.doorsActive.Add(GateSystem.Instance.doors[numberDoor].gameObject);
             var selectEnemy = Random.Range(1, 2);
 
             if (selectEnemy == 1)
-                EnemySpawner.Instance.GetEnemyExplosive(doors[numberDoor]);
+                EnemySpawner.Instance.GetEnemyExplosive(GateSystem.Instance.doors[numberDoor]);
             else
-                EnemySpawner.Instance.GetEnemySniper(doors[numberDoor]);
+                EnemySpawner.Instance.GetEnemySniper(GateSystem.Instance.doors[numberDoor]);
 
             _actualEnemiesActive++;
         }
