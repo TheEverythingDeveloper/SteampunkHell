@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.4964127, b: 0.57481724, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -23151,6 +23151,7 @@ GameObject:
   - component: {fileID: 2024639155}
   - component: {fileID: 2024639156}
   - component: {fileID: 2024639157}
+  - component: {fileID: 2024639158}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -23214,7 +23215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textStage: {fileID: 530883738}
-  initialEnemiesStage: 2
+  initialEnemiesStage: 0
   stages: 04000000080000000c000000
 --- !u!114 &2024639157
 MonoBehaviour:
@@ -23234,6 +23235,19 @@ MonoBehaviour:
     type: 3}
   enemyHeavyPrefab: {fileID: 0}
   enemyZeppellinPrefab: {fileID: 0}
+--- !u!114 &2024639158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024639152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1652d37713ffe24da26dbf79f061878, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedLanguage: 0
 --- !u!114 &2037198262
 MonoBehaviour:
   m_ObjectHideFlags: 0
