@@ -18,6 +18,10 @@ public class PlayerController
         {
             _model.Jump();
         }
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            _model.StartStage();
+        }
         if (Input.GetMouseButton(0))
         {
             _model.Shoot();

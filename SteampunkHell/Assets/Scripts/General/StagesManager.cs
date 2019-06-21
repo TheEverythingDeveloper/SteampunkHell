@@ -6,11 +6,21 @@ using TMPro;
 
 using Random = UnityEngine.Random;
 
-public class StatesManager : MonoBehaviour
+public class StagesManager : MonoBehaviour
 {
-    public TextMeshProUGUI textState;
+    public static StagesManager Instance
+    {
+        get
+        {
+            return _Instance;
+        }
+    }
 
-    public int initialEnemiesState;
+    private static StagesManager _Instance;
+
+    public TextMeshProUGUI textStage;
+
+    public int initialEnemiesStage;
     int _actualStage;
 
     int _actualEnemiesActive;
@@ -19,16 +29,15 @@ public class StatesManager : MonoBehaviour
     public int[] stages;
 
     bool waveActive;
+
+    void Awake()
+    {
+        _Instance = this;
+    }
     void Start()
     {
         AddStages();
-        textState.text = "Press enter to start stage " + (_actualStage + 1);
-    }
-
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.KeypadEnter) && !waveActive)
-            NewState();
+        textStage.text = "Press enter to start stage " + (_actualStage + 1);
     }
 
     void AddStages()
@@ -43,10 +52,13 @@ public class StatesManager : MonoBehaviour
 
     public void NewState()
     {
+        if (waveActive)
+            return;
+
         waveActive = true;
         _actualStage++;
-        initialEnemiesState++;
-        textState.text = "Stage " + _actualStage;
+        initialEnemiesStage++;
+        textStage.text = "Stage " + _actualStage;
         GateSystem.Instance.doorsActive = new List<GameObject>();
         allStages[CheckStage()]();
         Debug.Log("Oleada " + _actualStage + ". Con " + _actualEnemiesActive + " enemigos");
@@ -68,13 +80,13 @@ public class StatesManager : MonoBehaviour
         Debug.Log("Faltan matar: " + _actualEnemiesActive + " enemigos");
         if (_actualEnemiesActive <= 0)
         {
-            textState.text = "Press enter to start stage " + (_actualStage + 1);
+            textStage.text = "Press enter to start stage " + (_actualStage + 1);
             waveActive = false;
         }
     }
     void Stage1()
     {
-        for (int i = 0; i < initialEnemiesState; i++)
+        for (int i = 0; i < initialEnemiesStage; i++)
         {
             var numberDoor = Random.Range(0, GateSystem.Instance.doors.Count - 1);
             GateSystem.Instance.doorsActive.Add(GateSystem.Instance.doors[numberDoor].gameObject);
@@ -84,7 +96,7 @@ public class StatesManager : MonoBehaviour
     }
     void Stage2()
     {
-        for (int i = 0; i < initialEnemiesState; i++)
+        for (int i = 0; i < initialEnemiesStage; i++)
         {
             var numberDoor = Random.Range(0, GateSystem.Instance.doors.Count - 1);
             GateSystem.Instance.doorsActive.Add(GateSystem.Instance.doors[numberDoor].gameObject);
@@ -100,7 +112,7 @@ public class StatesManager : MonoBehaviour
     }
     void Stage3()
     {
-        for (int i = 0; i < initialEnemiesState; i++)
+        for (int i = 0; i < initialEnemiesStage; i++)
         {
             var numberDoor = Random.Range(0, GateSystem.Instance.doors.Count - 1);
             GateSystem.Instance.doorsActive.Add(GateSystem.Instance.doors[numberDoor].gameObject);

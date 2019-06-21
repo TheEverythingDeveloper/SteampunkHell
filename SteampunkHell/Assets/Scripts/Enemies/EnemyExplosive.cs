@@ -30,7 +30,7 @@ public class EnemyExplosive : Enemy
                 + Vector3.up * (agressiveness * 1.5f));
         }
         ReturnEnemy();
-        FindObjectOfType<StatesManager>().CheckEnemiesState();
+        FindObjectOfType<StagesManager>().CheckEnemiesState();
         DeathFeedback();
     }
     void Chase()

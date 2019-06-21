@@ -131,6 +131,10 @@ public class Model : MonoBehaviour
         OnCanShop(enter);
     }
 
+    public void StartStage()
+    {
+        StagesManager.Instance.NewState();
+    }
     public void StartShopping()
     {
         OnStartShopping();

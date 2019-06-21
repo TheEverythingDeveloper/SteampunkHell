@@ -69,7 +69,7 @@ public abstract class Enemy : RotationScript /*Hereda las corrutinas de rotacion
         dead = true;
         _player.KillEnemy(unitType);
         ReturnEnemy();
-        FindObjectOfType<StatesManager>().CheckEnemiesState();
+        FindObjectOfType<StagesManager>().CheckEnemiesState();
         DeathFeedback();
         //TODO: Volver al pool o algo asi
     }
