@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour
 {
     public Camera _myCam;
     public CinemachineVirtualCamera initialVC;
-    private CinemachineBrain _CMBrain;
+    public CinemachineBrain brainCM;
     private CinemachineVirtualCamera _actualVC;
 
     private Vector3 _cameraOffset;
@@ -34,8 +34,7 @@ public class CameraController : MonoBehaviour
     private void Awake()
     {
         _bodyTransform = GetComponentInChildren<Rigidbody>().gameObject.transform;
-        _CMBrain = _myCam.transform.parent.gameObject.GetComponent<CinemachineBrain>();
-        _camPivot = _CMBrain.gameObject.transform.parent.gameObject.transform;
+        _camPivot = brainCM.gameObject.transform.parent.gameObject.transform;
         _cameraOffset = _camPivot.position - transform.position;
         _actualVC = initialVC;
     }
@@ -43,12 +42,12 @@ public class CameraController : MonoBehaviour
     public void ChangeZoom(float newFOV)
     {
         _myCam.fieldOfView = newFOV;
-        if (_CMBrain.ActiveVirtualCamera == null)
+        if (brainCM.ActiveVirtualCamera == null)
         {
             StartCoroutine(ChangeZoomFirstTime(newFOV));
             return;
         }
-        _CMBrain.ActiveVirtualCamera.VirtualCameraGameObject.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView = newFOV;
+        brainCM.ActiveVirtualCamera.VirtualCameraGameObject.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView = newFOV;
     }
 
     IEnumerator ChangeZoomFirstTime(float newfov)
