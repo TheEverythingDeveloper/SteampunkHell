@@ -11,11 +11,6 @@ public class GameManager : MonoBehaviour
     [Tooltip("Esto es para si queremos saltearnos todo lo de la camara, etc, y poner al jugador donde queramos")]
     public bool movilityTest;
 
-    public TextMeshProUGUI textState;
-    public List<GameObject> enemiesActive;
-    public int initialEnemiesState;
-    public int state;
-
     public bool canPause;
 
     private void Awake()
@@ -37,10 +32,7 @@ public class GameManager : MonoBehaviour
         if (canPause)
             Paused();
     }
-    public void CheckState()
-    {
 
-    }
 
     private void Paused()
     {

@@ -11,16 +11,24 @@ public class StatesManager : MonoBehaviour
     public TextMeshProUGUI textState;
 
     public int initialEnemiesState;
-    int _state;
+    int _actualStage;
 
     int _actualEnemiesActive;
 
     public List<Action> allStages = new List<Action>();
     public int[] stages;
+
+    bool waveActive;
     void Start()
     {
         AddStages();
-        NewState();
+        textState.text = "Press enter to start stage " + (_actualStage + 1);
+    }
+
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.KeypadEnter) && !waveActive)
+            NewState();
     }
 
     void AddStages()
@@ -35,18 +43,19 @@ public class StatesManager : MonoBehaviour
 
     public void NewState()
     {
-        _state++;
+        waveActive = true;
+        _actualStage++;
         initialEnemiesState++;
-        textState.text = "State " + _state;
+        textState.text = "Stage " + _actualStage;
         GateSystem.Instance.doorsActive = new List<GameObject>();
         allStages[CheckStage()]();
-        Debug.Log("Oleada " + _state + ". Con " + _actualEnemiesActive + " enemigos");
+        Debug.Log("Oleada " + _actualStage + ". Con " + _actualEnemiesActive + " enemigos");
     }
     int CheckStage()
     {
         for (int i = 0; i < stages.Length; i++)
         {
-            if(_state < stages[i])
+            if(_actualStage < stages[i])
             {
                 return i;
             }
@@ -58,7 +67,10 @@ public class StatesManager : MonoBehaviour
         _actualEnemiesActive--;
         Debug.Log("Faltan matar: " + _actualEnemiesActive + " enemigos");
         if (_actualEnemiesActive <= 0)
-            NewState();
+        {
+            textState.text = "Press enter to start stage " + (_actualStage + 1);
+            waveActive = false;
+        }
     }
     void Stage1()
     {
