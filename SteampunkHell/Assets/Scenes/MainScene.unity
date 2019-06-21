@@ -23734,10 +23734,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movilityTest: 0
-  textState: {fileID: 530883738}
-  enemiesActive: []
-  initialEnemiesState: 3
-  state: 0
   canPause: 0
 --- !u!114 &2037198262
 MonoBehaviour:
