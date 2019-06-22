@@ -14,10 +14,10 @@ public class ShopsManager : MonoBehaviour
     private void Awake()
     {
         //TODO: Hacer todo esto directamente unido con Localization Manager
-        shopItems.Add(new ShopItem { itemID = 0, name = "Grenade", price = 50 });
+        /*shopItems.Add(new ShopItem { itemID = 0, name = "Grenade", price = 50 });
         shopItems.Add(new ShopItem { itemID = 1, name = "Pistol", price = 150 });
         shopItems.Add(new ShopItem { itemID = 2, name = "Shotgun", price = 300 });
-        shopItems.Add(new ShopItem { itemID = 3, name = "SpecialPistol", price = 500 });
+        shopItems.Add(new ShopItem { itemID = 3, name = "SpecialPistol", price = 500 });*/
     }
     //TODO: Aca van funciones para saber la cantidad de armas en venta, etc.
 }

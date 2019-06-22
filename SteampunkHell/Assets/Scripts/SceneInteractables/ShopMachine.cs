@@ -14,16 +14,16 @@ public class ShopMachine : MonoBehaviour
 
     private ShopsManager _shopMng; //Manager de todos los shops.
     private ShopControl _controller;
+    private ShopItemScroller _itemScroller;
     private ShopView _view;
     private ShopAudioController _audioControl;
 
-    private ShopItem _selectedItem;
     public int actualSelection;
 
     public event Action<bool> OnTrigger = delegate { }; //true = enter, false = exit
     public event Action<bool> OnUsing = delegate { };
     public event Action<bool> OnBuy = delegate { }; // true = lo compro, false = no tenia suficiente plata
-    public event Action<int> OnSelectItem = delegate { };
+    public event Action<bool> OnSelectItem = delegate { };
 
     private void Awake()
     {
@@ -31,6 +31,7 @@ public class ShopMachine : MonoBehaviour
         _view = GetComponent<ShopView>();
         _controller = new ShopControl(this);
 
+        _itemScroller = GetComponentInChildren<ShopItemScroller>();
         _audioControl = GetComponent<ShopAudioController>();
     }
 
@@ -44,9 +45,11 @@ public class ShopMachine : MonoBehaviour
 
         OnBuy += _view.Buy;
         OnBuy += _audioControl.Buy;
+        OnBuy += _itemScroller.Buy;
 
-        OnSelectItem += _view.Select;
         OnSelectItem += _audioControl.Select;
+        OnSelectItem += _itemScroller.Select;
+        _itemScroller.SelectionCallback += _view.Select;
     }
 
     public void TryBuy()
@@ -55,11 +58,13 @@ public class ShopMachine : MonoBehaviour
         OnBuy(true);
     }
 
-    public void SelectItem(int ID)
+    /// <summary>
+    /// Si el bool es true, entonces va a mover la seleccion para la derecha, sino para la izquierda.
+    /// </summary>
+    /// <param name="ID"></param>
+    public void SelectItem(bool right)
     {
-        if (ID < 0 || ID > _shopMng.shopItems.Count) return;
-
-        OnSelectItem(ID);
+        OnSelectItem(right);
     }
 
     public void PlayerOnTrigger(bool on)
