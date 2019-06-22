@@ -139,13 +139,13 @@ public class Model : MonoBehaviour
     public void StartShopping()
     {
         OnStartShopping();
-        //isShopping = true;
+        isShopping = true;
     }
 
     public void EndShopping()
     {
         OnEndShopping();
-        //isShopping = false;
+        isShopping = false;
     }
 
     public void Death() 

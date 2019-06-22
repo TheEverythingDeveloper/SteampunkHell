@@ -23,23 +23,11 @@ public class ShopControl
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
         {
-            _model.SelectItem(_model.actualSelection - 1);
+            _model.SelectItem(false);
         }
         else if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
         {
-            _model.SelectItem(_model.actualSelection + 1);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            _model.SelectItem(0);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            _model.SelectItem(1);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            _model.SelectItem(2);
+            _model.SelectItem(true);
         }
     }
 }

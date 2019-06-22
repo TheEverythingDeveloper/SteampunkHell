@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class ShopAudioController : MonoBehaviour
 {
+    private AudioSource _audioSrc;
+    public AudioClip buyAudio;
+    public AudioClip failAudio;
+    public AudioClip selectAudio;
+    public AudioClip startUsingAudio;
+    public AudioClip stopUsingAudio;
+    public AudioClip CanUseAudio;
+
+    private void Awake()
+    {
+        _audioSrc = GetComponent<AudioSource>();
+    }
     //TODO: Funciones de audio de todo tipo. Por ejemplo, comprar armas hace un ruido, mover para la derecha o izq, etc.
     //esto se tiene que conectar obviamente con los eventos de shopmachine.
 
@@ -19,14 +31,15 @@ public class ShopAudioController : MonoBehaviour
 
     public void Buy(bool canBuy)
     {
-        //en caso de que canBuy = true;
-        //TODO: Reproducir sonido de festejo, comprado, monedas gastandose, etc.
-        //en caso de que canBuy = false;
-        //TODO: Reproducir sonido de error.
+        if (canBuy) _audioSrc.clip = buyAudio;
+        _audioSrc.Play();
+        //TODO: fail audio // _audioSrc.clip = canBuy ? buyAudio : failAudio;
     }
 
-    public void Select(int ID)
+    public void Select(bool right)
     {
-        //TODO: Reproducir sonido de seleccion. En caso de que nos hayamos pasado del ID y que no hayan mas, reproducir error.
+        _audioSrc.clip = selectAudio;
+        _audioSrc.Play();
+        //TODO: En caso de que nos hayamos pasado del ID y que no hayan mas, reproducir error.
     }
 }
