@@ -45,7 +45,6 @@ public abstract class Enemy : RotationScript /*Hereda las corrutinas de rotacion
 
     IEnumerator ShootCoroutine()
     {
-        Debug.Log("se llamo");
         while (true)
         {
             //if (dead) yield break;
