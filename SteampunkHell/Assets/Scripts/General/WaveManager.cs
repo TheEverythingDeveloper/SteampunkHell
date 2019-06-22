@@ -63,6 +63,7 @@ public class WaveManager : MonoBehaviour
         textStage.text = "Stage " + _actualStage;
         allStages[CheckStage()]();
         Debug.Log("Oleada " + _actualStage + ". Con " + _actualEnemiesActive + " enemigos");
+        GateSystem.Instance.ActivateStage();
     }
     int CheckStage()
     {
@@ -90,8 +91,7 @@ public class WaveManager : MonoBehaviour
         for (int i = 0; i < initialEnemiesStage; i++)
         {
             var numberDoor = Random.Range(0, GateSystem.Instance.doors.Count - 1);
-            GateSystem.Instance.doorsActive.Add(GateSystem.Instance.doors[numberDoor].gameObject);
-            EnemySpawner.Instance.GetEnemySniper(GateSystem.Instance.doors[numberDoor]);
+            EnemySpawner.Instance.GetEnemySniper(GateSystem.Instance.doors[numberDoor].spawnEnemy());
             _actualEnemiesActive++;
         }
     }
@@ -100,13 +100,12 @@ public class WaveManager : MonoBehaviour
         for (int i = 0; i < initialEnemiesStage; i++)
         {
             var numberDoor = Random.Range(0, GateSystem.Instance.doors.Count - 1);
-            GateSystem.Instance.doorsActive.Add(GateSystem.Instance.doors[numberDoor].gameObject);
             var selectEnemy = Random.Range(1, 4);
 
             if (selectEnemy == 1)
-                EnemySpawner.Instance.GetEnemyExplosive(GateSystem.Instance.doors[numberDoor]);
+                EnemySpawner.Instance.GetEnemyExplosive(GateSystem.Instance.doors[numberDoor].spawnEnemy());
             else
-                EnemySpawner.Instance.GetEnemySniper(GateSystem.Instance.doors[numberDoor]);
+                EnemySpawner.Instance.GetEnemySniper(GateSystem.Instance.doors[numberDoor].spawnEnemy());
 
             _actualEnemiesActive++;
         }
@@ -116,13 +115,12 @@ public class WaveManager : MonoBehaviour
         for (int i = 0; i < initialEnemiesStage; i++)
         {
             var numberDoor = Random.Range(0, GateSystem.Instance.doors.Count - 1);
-            GateSystem.Instance.doorsActive.Add(GateSystem.Instance.doors[numberDoor].gameObject);
             var selectEnemy = Random.Range(1, 2);
 
             if (selectEnemy == 1)
-                EnemySpawner.Instance.GetEnemyExplosive(GateSystem.Instance.doors[numberDoor]);
+                EnemySpawner.Instance.GetEnemyExplosive(GateSystem.Instance.doors[numberDoor].spawnEnemy());
             else
-                EnemySpawner.Instance.GetEnemySniper(GateSystem.Instance.doors[numberDoor]);
+                EnemySpawner.Instance.GetEnemySniper(GateSystem.Instance.doors[numberDoor].spawnEnemy());
 
             _actualEnemiesActive++;
         }
