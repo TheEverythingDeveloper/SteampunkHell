@@ -32,6 +32,9 @@ public class ShopMachine : MonoBehaviour
         _controller = new ShopControl(this);
 
         _itemScroller = GetComponentInChildren<ShopItemScroller>();
+        _itemScroller.shopModel = this;
+        _itemScroller.shopMng = _shopMng;
+        _itemScroller.UpdateIcons();
         _audioControl = GetComponent<ShopAudioController>();
     }
 
@@ -54,17 +57,24 @@ public class ShopMachine : MonoBehaviour
 
     public void TryBuy()
     {
-        //TODO: if(selectedItem.price > plataActual) OnBuy(false); else => OnBuy(true);
-        OnBuy(true);
+        bool canBuy = _itemScroller.CanBuy();
+
+        OnBuy(canBuy);
+        StartCoroutine(ExitShopping());
+    }
+
+    public void ChangeWeapon(int weaponID)
+    {
+        _actualUser.BuyWeapon(weaponID);
     }
 
     /// <summary>
     /// Si el bool es true, entonces va a mover la seleccion para la derecha, sino para la izquierda.
     /// </summary>
     /// <param name="ID"></param>
-    public void SelectItem(bool right)
+    public void SelectItem(bool direction)
     {
-        OnSelectItem(right);
+        OnSelectItem(direction);
     }
 
     public void PlayerOnTrigger(bool on)
@@ -72,17 +82,21 @@ public class ShopMachine : MonoBehaviour
         OnTrigger(on);
     }
 
-    public void PlayerEnter(Model model)
+    public void PlayerEnter(Model model, PlayerPointsController pointController)
     {
         _actualUser = model;
+        _itemScroller.userCurrency = pointController;
         _actualUser.cameraControl.ChangeCamera(shopCM);
         GameManager.Instance.canPause = false;
         OnUsing(true);
+        SelectItem(true);
     }
 
     public IEnumerator ExitShopping()
     {
+        yield return new WaitForSeconds(1f);
         _actualUser.cameraControl.ChangeToInitialCamera();
+        _actualUser.EndShopping();
         _actualUser = null;
         yield return new WaitForSeconds(1);
         GameManager.Instance.canPause = true;

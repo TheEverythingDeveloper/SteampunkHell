@@ -3686,4 +3686,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d01cbbced3525f348b401ede6bc371a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shopModel: {fileID: 0}
+  userCurrency: {fileID: 0}
   allItemIcons: []
+  allIconsSprites:
+  - {fileID: 21300000, guid: 007f853dc52fd554ab81c0bbf977d932, type: 3}
+  - {fileID: 21300000, guid: b79b301feffecc24589094d8c614ca24, type: 3}
+  - {fileID: 21300000, guid: 18a2011bea81b3f45a6e0be35133d8f5, type: 3}
+  - {fileID: 21300000, guid: 1cd460a4a0ae8474b85800664bd9700d, type: 3}
+  - {fileID: 21300000, guid: 6b13369b6b7201a4eb1bedbf324eceb5, type: 3}

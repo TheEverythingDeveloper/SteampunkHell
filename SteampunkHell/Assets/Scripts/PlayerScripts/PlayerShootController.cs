@@ -9,6 +9,7 @@ public class PlayerShootController : MonoBehaviour
     [HideInInspector] public CameraController myCamera;
     private PlayerStrategyController _strategy;
 
+
     private void Awake()
     {
         _strategy = GetComponent<PlayerStrategyController>();

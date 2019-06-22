@@ -36,7 +36,7 @@ public class ShopAudioController : MonoBehaviour
         //TODO: fail audio // _audioSrc.clip = canBuy ? buyAudio : failAudio;
     }
 
-    public void Select(bool right)
+    public void Select(bool direction)
     {
         _audioSrc.clip = selectAudio;
         _audioSrc.Play();

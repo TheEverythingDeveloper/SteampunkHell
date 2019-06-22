@@ -30,6 +30,7 @@ public class Model : MonoBehaviour
     public event Action<bool> OnCanShop = delegate { }; //TODO: Feedback puede comprar.
     public event Action OnStartShopping = delegate { }; //TODO: Feedback cuando empieza a comprar
     public event Action OnEndShopping = delegate { }; //TODO: Feedback cuando termina de comprar
+    public event Action<int> OnBuyWeapon = delegate { };
 
     private void Awake()
     {
@@ -70,6 +71,10 @@ public class Model : MonoBehaviour
 
         OnCanShop += _moveControl.EnterShop;
         //TODO: OnCanShop += _view.CanShop;
+
+        OnBuyWeapon += _strategyControl.weaponMng.ChangeWeapon;
+        //TODO: OnBuyWeapon += _view.ChangeWeapon; //cambia la interfaz segun el arma.
+        //TODO: OnBuyWeapon += _moveController.ChangeWeapon; //segun el arma nos movemos diferente
     }
 
     private void Update()
@@ -138,14 +143,19 @@ public class Model : MonoBehaviour
     }
     public void StartShopping()
     {
-        OnStartShopping();
         isShopping = true;
+        OnStartShopping();
     }
 
     public void EndShopping()
     {
-        OnEndShopping();
         isShopping = false;
+        OnEndShopping();
+    }
+
+    public void BuyWeapon(int ID)
+    {
+        OnBuyWeapon(ID);
     }
 
     public void Death() 
