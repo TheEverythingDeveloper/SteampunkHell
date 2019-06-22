@@ -53,7 +53,7 @@ public class CollisionController : MonoBehaviour
         {
             if(_actualShopMachine != null)
             {
-                _actualShopMachine.PlayerEnter(_model);
+                _actualShopMachine.PlayerEnter(_model, GetComponent<PlayerPointsController>());
                 _model.StartShopping();
             }
         }

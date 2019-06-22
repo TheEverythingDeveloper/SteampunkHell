@@ -4,19 +4,27 @@ using UnityEngine;
 
 public class PlayerPointsController : MonoBehaviour
 {
-    public float points;
+    public int points;
 
     [Tooltip("0 = Laser, 1 = Heavy, 2 = Explosive, 3 = Zeppellin, 4 = Boss, 5 = Other")]
-    public List<float> pointsTable;
+    public List<int> pointsTable;
     
     public void KillEnemy(Unit unitID)
     {
         ChangePoints(pointsTable[(int)unitID]);
     }
 
-    private void ChangePoints(float amount)
+    private void ChangePoints(int amount)
     {
         points += amount;
         UIController.Instance.NewPoints(amount);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            points += 100;
+        }
     }
 }

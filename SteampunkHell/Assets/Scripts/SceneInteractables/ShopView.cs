@@ -9,7 +9,6 @@ public class ShopView : MonoBehaviour
     private ShopItemScroller _itemScroller;
     private ShopItem _actualShopItem;
 
-
     public GameObject allCanvas;
 
     public GameObject background;
@@ -54,7 +53,13 @@ public class ShopView : MonoBehaviour
         StartCoroutine(ChangeBackgroundColor(backgroundAColors[rarenessID], backgroundBColors[rarenessID]));
 
         nameText.text = selectedShopItem.name;
-        priceText.text = "$1000 / $" + selectedShopItem.price;
+
+        if (_itemScroller.CanBuy())
+            priceText.color = Color.green;
+        else
+            priceText.color = Color.red;
+
+        priceText.text = _itemScroller.userCurrency.points+" / $" + selectedShopItem.price;
     }
 
     IEnumerator ChangeBackgroundColor(Color colorA, Color colorB)

@@ -68,6 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraControl: {fileID: 0}
+  isShopping: 0
 --- !u!114 &8062701074734061919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,6 +83,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _myCam: {fileID: 0}
   initialVC: {fileID: 0}
+  brainCM: {fileID: 0}
   limitInX: 0
   sensitivityX: 8
   sensitivityY: 8
@@ -196,12 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 0
-  pointsTable:
-  - 80
-  - 220
-  - 50
-  - 1000
-  - 7500
+  pointsTable: 32000000960000004b000000c2010000d0070000
 --- !u!114 &3336831377320711632
 MonoBehaviour:
   m_ObjectHideFlags: 0

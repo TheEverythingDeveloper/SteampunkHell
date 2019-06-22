@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopItem
+public class ShopItem //A.K.A BUILDER.
 {
     public int itemID;
     public string name;
