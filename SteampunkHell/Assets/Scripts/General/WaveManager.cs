@@ -82,6 +82,7 @@ public class WaveManager : MonoBehaviour
         Debug.Log("Faltan matar: " + _actualEnemiesActive + " enemigos");
         if (_actualEnemiesActive <= 0)
         {
+            EventsManager.TriggerEvent(TypeOfEvent.FinishWave);
             textStage.text = "Press enter to start stage " + (_actualStage + 1);
             waveActive = false;
         }

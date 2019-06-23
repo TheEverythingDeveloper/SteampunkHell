@@ -12,10 +12,12 @@ public class GameManager : MonoBehaviour
     public bool movilityTest;
 
     public bool canPause;
-
+    public AudioSource music, ambient;
     private void Awake()
     {
         Instance = this;
+        EventsManager.SubscribeToEvent(TypeOfEvent.NewWave, MusicWave);
+        EventsManager.SubscribeToEvent(TypeOfEvent.FinishWave, AmbientFinishWave);
     }
 
     private void Update()
@@ -33,6 +35,17 @@ public class GameManager : MonoBehaviour
             Paused();
     }
 
+    void MusicWave(params object[] parameters)
+    {
+        ambient.Stop();
+        music.Play();
+    }
+
+    void AmbientFinishWave(params object[] parameters)
+    {
+        ambient.Play();
+        music.Pause();
+    }
 
     private void Paused()
     {

@@ -71,5 +71,6 @@ public class EventsManager
 public enum TypeOfEvent
 {
     EnemyDead,
-    NewWave
+    NewWave,
+    FinishWave
 }

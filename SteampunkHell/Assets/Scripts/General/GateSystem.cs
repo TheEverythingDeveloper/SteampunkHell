@@ -25,24 +25,28 @@ public class GateSystem : MonoBehaviour
     private void Start()
     {
         //EventsManager.SubscribeToEvent(TypeOfEvent.NewWave, ActivateStage);
+        EventsManager.SubscribeToEvent(TypeOfEvent.FinishWave, ClosedDoors);
        /* for (int i = 0; i < doors.Count; i++)
         {
             var t = Random.Range(0, texturesDoor.Count);
             doors[i].gameObject.GetComponent<Renderer>().material.SetTexture("_Texture", texturesDoor[t]);
         }*/
     }
-
+    public void ClosedDoors(params object[] parameters)
+    {
+        for (int i = 0; i < doorsActive.Count; i++)
+        {
+            doorsActive[i].DoorClosed();
+            doorsActive = new List<Gate>();
+        }
+    }
     public void ActivateStage(params object[] parameters)
     {
         //TODO: Activar puertas
-        for (int i = 0; i < doors.Count; i++)
-        {
-            doors[i].DoorClosed();
-        }
         for (int i = 0; i < doorsActive.Count; i++)
         {
             doorsActive[i].DoorActive();
         }
-        doorsActive = new List<Gate>();
+
     }
 }
