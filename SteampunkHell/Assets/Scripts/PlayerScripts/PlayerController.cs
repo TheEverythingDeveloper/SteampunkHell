@@ -30,6 +30,10 @@ public class PlayerController
         {
             _model.StopShooting();
         }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            _model.OpenDoor();
+        }
 
         //Seleccion de ultis
         if (Input.GetKeyDown(KeyCode.Alpha1))

@@ -19,6 +19,8 @@ public class Model : MonoBehaviour
     private bool ulting;
     public bool isShopping;
 
+    public Door inDoor;
+
     public event Action OnDeath = delegate { };
     public event Action OnJump = delegate { };
     public event Action OnShoot = delegate { };
@@ -135,6 +137,15 @@ public class Model : MonoBehaviour
     public void CanShop(bool enter)
     {
         OnCanShop(enter);
+    }
+
+    public void OpenDoor()
+    {
+        if (inDoor == null)
+            return;
+
+        inDoor.OpenDoor();
+        inDoor = null;
     }
 
     public void StartStage()

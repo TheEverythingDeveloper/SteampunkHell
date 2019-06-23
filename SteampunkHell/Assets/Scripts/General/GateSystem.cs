@@ -37,8 +37,8 @@ public class GateSystem : MonoBehaviour
         for (int i = 0; i < doorsActive.Count; i++)
         {
             doorsActive[i].DoorClosed();
-            doorsActive = new List<Gate>();
         }
+            doorsActive = new List<Gate>();
     }
     public void ActivateStage(params object[] parameters)
     {

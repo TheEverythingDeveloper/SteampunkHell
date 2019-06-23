@@ -9,7 +9,6 @@ public class Gate : MonoBehaviour
     private void Awake()
     {
         _anim = GetComponent<Animator>();
-        FindObjectOfType<GateSystem>().doors.Add(this);
     }
 
     public void DoorActive()
