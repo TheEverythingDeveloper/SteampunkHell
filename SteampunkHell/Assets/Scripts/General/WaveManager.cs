@@ -87,13 +87,15 @@ public class WaveManager : MonoBehaviour
             waveActive = false;
         }
     }
+
+    public void AddToEnemiesActive() { _actualEnemiesActive++; } //Simplemente agregar uno sin entrar a la variable privada
+
     void Stage1()
     {
         for (int i = 0; i < initialEnemiesStage; i++)
         {
             var numberDoor = Random.Range(0, GateSystem.Instance.doors.Count - 1);
             EnemySpawner.Instance.GetEnemySniper(GateSystem.Instance.doors[numberDoor].spawnEnemy());
-            _actualEnemiesActive++;
         }
     }
     void Stage2()
@@ -107,9 +109,11 @@ public class WaveManager : MonoBehaviour
                 EnemySpawner.Instance.GetEnemyExplosive(GateSystem.Instance.doors[numberDoor].spawnEnemy());
             else
                 EnemySpawner.Instance.GetEnemySniper(GateSystem.Instance.doors[numberDoor].spawnEnemy());
-
-            _actualEnemiesActive++;
         }
+
+        Debug.Log("bla");
+        EnemySpawner.Instance.GetEnemyZeppellin(
+            GateSystem.Instance.zepellinSpawnPoints[Random.Range(0, GateSystem.Instance.zepellinSpawnPoints.Count)]);
     }
     void Stage3()
     {
@@ -122,9 +126,9 @@ public class WaveManager : MonoBehaviour
                 EnemySpawner.Instance.GetEnemyExplosive(GateSystem.Instance.doors[numberDoor].spawnEnemy());
             else
                 EnemySpawner.Instance.GetEnemySniper(GateSystem.Instance.doors[numberDoor].spawnEnemy());
-
-            _actualEnemiesActive++;
         }
+
+
     }
     void Stage4()
     {

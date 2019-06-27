@@ -5,7 +5,7 @@ using UnityEngine;
 public class SniperEnemy : Enemy
 {
     [Tooltip("Esta va a ser la distancia a la que va a apuntar del jugador. Si esta en 0 va a apuntar a su frente")]
-    float _failOffset; //
+    float _failOffset; 
     [Tooltip("Tiempo de espera entre cada vez que dispara y apunta de nuevo")]
     public float aimCD;
 

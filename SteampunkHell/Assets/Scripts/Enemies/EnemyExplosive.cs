@@ -9,6 +9,7 @@ public class EnemyExplosive : Enemy
 
     protected override void Reset()
     {
+        WaveManager.Instance.AddToEnemiesActive();
         life = _totalLife;
         dead = false;
     }

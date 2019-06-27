@@ -13,6 +13,7 @@ public class GlobalVariables
     //Variables global Enemy
     public float movementSpeed; //Velocidad de la unidad
     public float bulletSpeed; //Velocidad de las balas que spawnea
+    public float rotationSpeed; // Velocidad con la que gira, para que sea smooth tiene que ser un numero muy bajo
 
     //Variables Enemy Sniper
     public Vector2 failOffsetRange; //Esta va a ser el rango posible de distancia a la que va a apuntar del jugador. Si esta en 0 va a apuntar a su frente
@@ -21,4 +22,7 @@ public class GlobalVariables
 
     //Variables Enemy Explosive
     public float timeExploit;
+
+    //Variables Enemy Zeppellin
+    public float spawnSpeed;
 }

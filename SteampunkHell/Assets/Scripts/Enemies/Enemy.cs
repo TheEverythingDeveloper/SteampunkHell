@@ -37,6 +37,7 @@ public abstract class Enemy : RotationScript /*Hereda las corrutinas de rotacion
 
     protected virtual void Reset()
     {
+        WaveManager.Instance.AddToEnemiesActive();
         life = _totalLife;
         dead = false;
         StartCoroutine(ShootCoroutine());
@@ -54,7 +55,7 @@ public abstract class Enemy : RotationScript /*Hereda las corrutinas de rotacion
         }
     }
 
-    public bool ReceiveDamage(float amount, Vector3 pushForce)
+    public virtual bool ReceiveDamage(float amount, Vector3 pushForce)
     {
         life -= amount;
         life = Mathf.Clamp(life, 0, _totalLife);

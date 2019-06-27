@@ -33,8 +33,14 @@ public class VariablesPointer
     public static readonly GlobalVariables EnemyExplosiveState = new GlobalVariables
     {
         damage = 10,
-        speed = 3,
+        speed = 5,
         maxDistance = 5,
         timeExploit = 2
+    };
+
+    public static readonly GlobalVariables EnemyZeppellinState = new GlobalVariables
+    {
+        movementSpeed = 2,
+        rotationSpeed = 0.3f
     };
 }

@@ -17,6 +17,7 @@ public class GateSystem : MonoBehaviour
     public List<Gate> doors;
     public List<Gate> doorsActive;// = new List<Gate>();
     public List<Texture2D> texturesDoor;
+    public List<Transform> zepellinSpawnPoints = new List<Transform>();
 
     private void Awake()
     {

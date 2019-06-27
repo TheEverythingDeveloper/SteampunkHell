@@ -37,14 +37,27 @@ public class GameManager : MonoBehaviour
 
     void MusicWave(params object[] parameters)
     {
-        ambient.Stop();
-        music.Play();
+        StartCoroutine(ChangeWaveMusicTransition(ambient, music, 0.3f));
     }
 
     void AmbientFinishWave(params object[] parameters)
     {
-        ambient.Play();
-        music.Pause();
+        StartCoroutine(ChangeWaveMusicTransition(music, ambient, 0.3f));
+    }
+
+    IEnumerator ChangeWaveMusicTransition(AudioSource actualMusic, AudioSource newMusic, float transitionSpeed)
+    {
+        newMusic.volume = 0;
+        newMusic.Play();
+        while(actualMusic.volume > 0 || newMusic.volume < 0.9f)
+        {
+            actualMusic.volume -= Time.deltaTime * transitionSpeed;
+            newMusic.volume += Time.deltaTime * transitionSpeed;
+            actualMusic.volume = Mathf.Clamp01(actualMusic.volume);
+            newMusic.volume = Mathf.Clamp01(newMusic.volume);
+            yield return new WaitForEndOfFrame();
+        }
+        actualMusic.Stop();
     }
 
     private void Paused()
