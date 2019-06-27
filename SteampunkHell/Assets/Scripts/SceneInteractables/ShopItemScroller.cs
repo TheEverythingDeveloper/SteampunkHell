@@ -58,12 +58,11 @@ public class ShopItemScroller : MonoBehaviour
         if (canBuy)
         {
             userCurrency.points -= _selectedItem.price;
+            shopModel.ChangeWeapon(_selectedItem.itemID);
         }
-        shopModel.ChangeWeapon(_selectedItem.itemID);
 
         shopModel.SelectItem(true);
         //TODO: Animacion de agrandarse el icono o algo asi.
-
     }
 
     public void Select(bool direction)

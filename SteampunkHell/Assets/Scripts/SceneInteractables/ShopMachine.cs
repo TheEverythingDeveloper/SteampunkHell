@@ -25,6 +25,8 @@ public class ShopMachine : MonoBehaviour
     public event Action<bool> OnBuy = delegate { }; // true = lo compro, false = no tenia suficiente plata
     public event Action<bool> OnSelectItem = delegate { };
 
+    private bool _canBuy = true; //si estamos en el medio de la oleada, no podemos comprar por ejemplo.
+
     private void Awake()
     {
         _shopMng = transform.parent.GetComponent<ShopsManager>();
@@ -53,6 +55,20 @@ public class ShopMachine : MonoBehaviour
         OnSelectItem += _audioControl.Select;
         OnSelectItem += _itemScroller.Select;
         _itemScroller.SelectionCallback += _view.Select;
+
+        EventsManager.SubscribeToEvent(TypeOfEvent.NewWave, StartWave);
+        EventsManager.SubscribeToEvent(TypeOfEvent.FinishWave, EndWave);
+    }
+
+    public void StartWave(params object[] parameters)
+    {
+        _canBuy = false;
+        OnTrigger(false);
+    }
+
+    public void EndWave(params object[] parameters)
+    {
+        _canBuy = true;
     }
 
     public void TryBuy()
@@ -82,11 +98,14 @@ public class ShopMachine : MonoBehaviour
 
     public void PlayerOnTrigger(bool on)
     {
+        if (!_canBuy) return;
+
         OnTrigger(on);
     }
 
     public void PlayerEnter(Model model, PlayerPointsController pointController)
     {
+        if (!_canBuy) return;
         _actualUser = model;
         _itemScroller.userCurrency = pointController;
         _actualUser.cameraControl.ChangeCamera(shopCM);
