@@ -9,6 +9,13 @@ public class Door : MonoBehaviour
     public TextMeshProUGUI textZone;
     public float price;
     Animator[] _animationsDoor;
+    AudioSource _audiosrc;
+    public AudioClip newZoneClip;
+
+    private void Awake()
+    {
+        _audiosrc = GetComponent<AudioSource>();
+    }
 
     private void Start()
     {
@@ -23,6 +30,15 @@ public class Door : MonoBehaviour
             other.GetComponentInParent<Model>().inDoor = this;
         }
     }
+
+    public IEnumerator OpenDoorCoroutine()
+    {
+        OpenDoor();
+        yield return new WaitForSeconds(5f);
+        _audiosrc.clip = newZoneClip;
+        _audiosrc.Play();
+    }
+
     private void OnTriggerExit(Collider other)
     {
         textZone.gameObject.SetActive(false);
@@ -32,7 +48,7 @@ public class Door : MonoBehaviour
     public void OpenDoor()
     {
         GameManager.Instance.openDoor.Play();
-        GetComponent<AudioSource>().Play();
+        _audiosrc.Play();
         for (int i = 0; i < _animationsDoor.Length; i++)
         {
             _animationsDoor[i].SetTrigger("Open");

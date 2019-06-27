@@ -143,7 +143,7 @@ public class Model : MonoBehaviour
         if (inDoor == null)
             return;
 
-        inDoor.OpenDoor();
+        inDoor.StartCoroutine(inDoor.OpenDoorCoroutine());
         inDoor = null;
     }
 

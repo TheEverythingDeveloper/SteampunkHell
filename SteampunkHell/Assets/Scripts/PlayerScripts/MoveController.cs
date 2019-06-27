@@ -71,15 +71,19 @@ public class MoveController : MonoBehaviour
     {
         if (!canMove) return;
 
+        Vector3 xMovement = Vector3.zero;
+        Vector3 zMovement = Vector3.zero;
         if (_isGrounded)
         {
-            transform.position += transform.right * Input.GetAxis("Horizontal") * _groundedSpeed;
-            transform.position += transform.forward * Input.GetAxis("Vertical") * _groundedSpeed;
+            xMovement = transform.right * Input.GetAxis("Horizontal") * _groundedSpeed;
+            zMovement = transform.forward * Input.GetAxis("Vertical") * _groundedSpeed;
+            _rb.velocity = xMovement + zMovement + new Vector3(0,_rb.velocity.y,0);
         }
         else //air movement, slowly
         {
-            transform.position += transform.right * Input.GetAxis("Horizontal") * _inAirSpeed;
-            transform.position += transform.forward * Input.GetAxis("Vertical") * _inAirSpeed;
+            xMovement = transform.right * Input.GetAxis("Horizontal") * _inAirSpeed;
+            zMovement = transform.forward * Input.GetAxis("Vertical") * _inAirSpeed;
+            _rb.velocity = xMovement + zMovement + new Vector3(0, _rb.velocity.y, 0);
             _rb.AddForce((Physics.gravity * _gravityMultiplier) - Physics.gravity);
         }
     }
