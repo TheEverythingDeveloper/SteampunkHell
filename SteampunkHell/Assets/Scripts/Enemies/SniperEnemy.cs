@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class SniperEnemy : Enemy
 {
+    public float distanceAttack;
     [Tooltip("Esta va a ser la distancia a la que va a apuntar del jugador. Si esta en 0 va a apuntar a su frente")]
     float _failOffset; 
     [Tooltip("Tiempo de espera entre cada vez que dispara y apunta de nuevo")]
@@ -18,6 +20,8 @@ public class SniperEnemy : Enemy
         base.Awake();
         _sniperLine = GetComponent<LineRenderer>();
         _totalAimCD = aimCD;
+        _agent = GetComponent<NavMeshAgent>();
+        _agent.speed = VariablesPointer.EnemySniperState.movementSpeed;
     }
 
     protected override void Reset()
@@ -38,12 +42,31 @@ public class SniperEnemy : Enemy
     {
         if (dead) return;
 
+        var _dist = Vector3.Distance(_player.gameObject.transform.position, transform.position);
+
         Aim();
- 
+
+        if (_dist > distanceAttack)
+        {
+            if (_agent.isStopped)
+                _agent.isStopped = false;
+
+            _agent.SetDestination(_player.transform.position);
+        }
+        else
+        {
+            if (!_agent.isStopped)
+            {
+                _agent.isStopped = true;
+                _rb.velocity = Vector3.zero;
+            }
+        }
+
     }
 
     private void Aim()
     {
+
         if (aimCD > 0)
         {
             aimCD -= Time.deltaTime;

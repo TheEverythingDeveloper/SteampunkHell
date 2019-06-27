@@ -22,7 +22,7 @@ public class VariablesPointer
 
     public static readonly GlobalVariables EnemySniperState = new GlobalVariables
     {
-        movementSpeed = 10,
+        movementSpeed = 3,
         bulletSpeed = 5,
         agressiveness = 3,
         failOffsetRange = new Vector2(0,7),

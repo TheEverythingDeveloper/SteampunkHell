@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public abstract class Enemy : RotationScript /*Hereda las corrutinas de rotacion smooth*/, IAgressive, IVulnerable
 {
@@ -20,7 +21,7 @@ public abstract class Enemy : RotationScript /*Hereda las corrutinas de rotacion
     protected Model _player;
     protected float _totalLife;
     protected Rigidbody _rb;
-
+    public NavMeshAgent _agent;
     //TODO: Builder de enemigo
 
     protected virtual void Awake()

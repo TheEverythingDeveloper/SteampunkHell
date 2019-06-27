@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class HeavyEnemy : Enemy
 {
@@ -12,6 +13,8 @@ public class HeavyEnemy : Enemy
     protected override void Awake()
     {
         base.Awake();
+        _agent = GetComponent<NavMeshAgent>();
+        _agent.speed = VariablesPointer.EnemyHeavyState.speed;
         _anim = GetComponentInChildren<Animator>();
     }
     protected override void Start()
@@ -27,11 +30,22 @@ public class HeavyEnemy : Enemy
 
             if (_dist < 10)
             {
+                if (!_agent.isStopped)
+                {
+                    Debug.Log(_rb.velocity);
+                    _agent.isStopped = true;
+                    _rb.velocity = Vector3.zero;
+                }
                 attackActive = true;
                 StartCoroutine(AttackRobot());
             }
             else
+            {
+                if(_agent.isStopped)
+                    _agent.isStopped = false;
+
                 Chase();
+            }
         }
 
     }
@@ -52,8 +66,8 @@ public class HeavyEnemy : Enemy
 
     void Chase()
     {
-        transform.forward = _player.gameObject.transform.position - transform.position;
-        transform.position += transform.forward * VariablesPointer.EnemyHeavyState.speed * Time.deltaTime;
+        //transform.forward = _player.gameObject.transform.position - transform.position;
+        _agent.SetDestination(_player.transform.position);
     }
     protected override void DeathFeedback()
     {
