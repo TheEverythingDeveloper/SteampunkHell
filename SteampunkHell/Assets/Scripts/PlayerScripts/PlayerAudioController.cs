@@ -21,6 +21,13 @@ public class PlayerAudioController : MonoBehaviour
         _audioSrc.Play();
     }
 
+    public void MakeSound(AudioClip newSound)
+    {
+        _audioSrc.clip = newSound;
+        _audioSrc.Stop();
+        _audioSrc.Play();
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.M))

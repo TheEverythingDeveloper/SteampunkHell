@@ -405,6 +405,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b2e386aaddb1244796978e9fddb5db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
+  agressiveness: 0
   reloadAmount: 3
   reloadSpeed: 1
   audioController: {fileID: 8331811433361200166}
@@ -670,6 +672,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b2e386aaddb1244796978e9fddb5db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
+  agressiveness: 0
   reloadAmount: 3
   reloadSpeed: 1
   audioController: {fileID: 8331811433361200166}
@@ -1182,7 +1186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audios:
-  - {fileID: 0}
+  - {fileID: 8300000, guid: a6438ddbfc8a38c4ebc0b5fcab136fa1, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -1508,6 +1512,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b2e386aaddb1244796978e9fddb5db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
+  agressiveness: 0
   reloadAmount: 3
   reloadSpeed: 1
   audioController: {fileID: 8331811433361200166}
@@ -1793,6 +1799,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b2e386aaddb1244796978e9fddb5db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
+  agressiveness: 0
   reloadAmount: 3
   reloadSpeed: 1
   audioController: {fileID: 8331811433361200166}
@@ -2079,6 +2087,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b2e386aaddb1244796978e9fddb5db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
+  agressiveness: 0
   reloadAmount: 3
   reloadSpeed: 1
   audioController: {fileID: 8331811433361200166}
@@ -2178,6 +2188,26 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 7393764667924964565, guid: e436ed1582305a240b9891d32a96eb19,
+        type: 3}
+      propertyPath: weaponMng
+      value: 
+      objectReference: {fileID: 383151857939711736}
+    - target: {fileID: 8062701074734061919, guid: e436ed1582305a240b9891d32a96eb19,
+        type: 3}
+      propertyPath: _myCam
+      value: 
+      objectReference: {fileID: 7501391259365466392}
+    - target: {fileID: 8062701074734061919, guid: e436ed1582305a240b9891d32a96eb19,
+        type: 3}
+      propertyPath: initialVC
+      value: 
+      objectReference: {fileID: 7366849214221650641}
+    - target: {fileID: 8062701074734061919, guid: e436ed1582305a240b9891d32a96eb19,
+        type: 3}
+      propertyPath: brainCM
+      value: 
+      objectReference: {fileID: 5253606868753800330}
     - target: {fileID: 8062701074734061917, guid: e436ed1582305a240b9891d32a96eb19,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2248,26 +2278,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.47112364
       objectReference: {fileID: 0}
-    - target: {fileID: 7393764667924964565, guid: e436ed1582305a240b9891d32a96eb19,
-        type: 3}
-      propertyPath: weaponMng
-      value: 
-      objectReference: {fileID: 383151857939711736}
-    - target: {fileID: 8062701074734061919, guid: e436ed1582305a240b9891d32a96eb19,
-        type: 3}
-      propertyPath: _myCam
-      value: 
-      objectReference: {fileID: 7501391259365466392}
-    - target: {fileID: 8062701074734061919, guid: e436ed1582305a240b9891d32a96eb19,
-        type: 3}
-      propertyPath: initialVC
-      value: 
-      objectReference: {fileID: 7366849214221650641}
-    - target: {fileID: 8062701074734061919, guid: e436ed1582305a240b9891d32a96eb19,
-        type: 3}
-      propertyPath: brainCM
-      value: 
-      objectReference: {fileID: 5253606868753800330}
     - target: {fileID: 8062701074908449895, guid: e436ed1582305a240b9891d32a96eb19,
         type: 3}
       propertyPath: m_Layer

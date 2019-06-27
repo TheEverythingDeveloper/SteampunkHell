@@ -18,6 +18,7 @@ public class ShopView : MonoBehaviour
 
     public TextMeshProUGUI priceText;
     public TextMeshProUGUI nameText;
+    public TextMeshProUGUI enterToShopText;
 
     private void Awake()
     {
@@ -27,10 +28,12 @@ public class ShopView : MonoBehaviour
     public void CanShop(bool can)
     {
         allCanvas.SetActive(can);
+        enterToShopText.gameObject.SetActive(can);
     }
 
     public void Using(bool startUsing)
     {
+        enterToShopText.gameObject.SetActive(!startUsing);
         Debug.Log(startUsing ? "se empezo a usar" : "se termino de usar");
         //TODO: Shader que pasa de ser una textura que no se ve que es, a algo que se ve con detalle (al reves en caso de false)
     }

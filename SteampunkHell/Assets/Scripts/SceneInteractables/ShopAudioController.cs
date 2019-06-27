@@ -6,6 +6,7 @@ public class ShopAudioController : MonoBehaviour
 {
     private AudioSource _audioSrc;
     public AudioClip buyAudio;
+    public AudioClip newWeaponAudio;
     public AudioClip failAudio;
     public AudioClip selectAudio;
     public AudioClip startUsingAudio;
@@ -31,9 +32,26 @@ public class ShopAudioController : MonoBehaviour
 
     public void Buy(bool canBuy)
     {
-        if (canBuy) _audioSrc.clip = buyAudio;
-        _audioSrc.Play();
-        //TODO: fail audio // _audioSrc.clip = canBuy ? buyAudio : failAudio;
+        StartCoroutine(TryBought(canBuy));
+    }
+
+    IEnumerator TryBought(bool canBuy)
+    {
+        _audioSrc.Stop();
+        yield return new WaitForSeconds(0.1f);
+        if (canBuy)
+        {
+            _audioSrc.clip = buyAudio;
+            _audioSrc.Play();
+            yield return new WaitForSeconds(0.4f);
+            _audioSrc.clip = newWeaponAudio;
+            _audioSrc.Play();
+        }
+        else
+        {
+            _audioSrc.clip = failAudio;
+            _audioSrc.Play();
+        }
     }
 
     public void Select(bool direction)
