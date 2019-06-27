@@ -1,0 +1,162 @@
+fileFormatVersion: 2
+guid: 9252f7d569301a648a989658f3852efd
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: bolt
+    100002: bullet
+    100004: bullet001
+    100006: bullet002
+    100008: dot
+    100010: glass
+    100012: low
+    100014: magazine
+    100016: mount
+    100018: mount001
+    100020: //RootNode
+    100022: sight
+    100024: stock
+    100026: trigger
+    400000: bolt
+    400002: bullet
+    400004: bullet001
+    400006: bullet002
+    400008: dot
+    400010: glass
+    400012: low
+    400014: magazine
+    400016: mount
+    400018: mount001
+    400020: //RootNode
+    400022: sight
+    400024: stock
+    400026: trigger
+    2100000: vray_material
+    2300000: bolt
+    2300002: bullet
+    2300004: bullet001
+    2300006: bullet002
+    2300008: dot
+    2300010: glass
+    2300012: low
+    2300014: magazine
+    2300016: mount
+    2300018: mount001
+    2300020: //RootNode
+    2300022: sight
+    2300024: stock
+    2300026: trigger
+    3300000: bolt
+    3300002: bullet
+    3300004: bullet001
+    3300006: bullet002
+    3300008: dot
+    3300010: glass
+    3300012: low
+    3300014: magazine
+    3300016: mount
+    3300018: mount001
+    3300020: //RootNode
+    3300022: sight
+    3300024: stock
+    3300026: trigger
+    4300000: gun
+    4300002: magazine
+    4300004: bullet
+    4300006: bullet001
+    4300008: bullet002
+    4300010: trigger
+    4300012: stock
+    4300014: bolt
+    4300016: low
+    4300018: sight
+    4300020: glass
+    4300022: dot
+    4300024: mount
+    4300026: mount001
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
