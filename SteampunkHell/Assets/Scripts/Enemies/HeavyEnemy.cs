@@ -5,17 +5,19 @@ using UnityEngine;
 public class HeavyEnemy : Enemy
 {
     bool attackActive;
-    public GameObject robotAttack;
-    public int countBullets;
+    public Transform spawnBullets;
+    public int amountBullets;
+    int _totalAmountBullets;
+    Animator _anim;
     protected override void Awake()
     {
         base.Awake();
-
+        _anim = GetComponentInChildren<Animator>();
     }
     protected override void Start()
     {
         base.Start();
-
+        _totalAmountBullets = amountBullets;
     }
     private void Update()
     {
@@ -35,23 +37,23 @@ public class HeavyEnemy : Enemy
     }
     IEnumerator AttackRobot()
     {
-        robotAttack.transform.position = Vector3.Lerp(robotAttack.transform.position, new Vector3(0, 1.5f, 0), 2f);
-        yield return new WaitForSeconds(3);
-        var rotSpawner = 180 / countBullets;
-        for (int i = 0; i < countBullets; i++)
-        {
-            robotAttack.transform.Rotate(Vector3.up, i * rotSpawner);
-            EnemyBulletSpawner.Instance.GetBulletAt(robotAttack.transform);
-        }
+        var rotSpawner = 180 / _totalAmountBullets;
+        _anim.SetBool("AttackActive", true);
         yield return new WaitForSeconds(2);
-        robotAttack.transform.position = Vector3.Lerp(robotAttack.transform.position, Vector3.zero, 2f);
-        yield return new WaitForSeconds(3);
+        for (int i = 0; i < amountBullets; i++)
+        {
+            spawnBullets.localRotation = Quaternion.Euler(new Vector3(0, i * rotSpawner + 90, 0));
+            Shoot();
+            yield return new WaitForSeconds(shootCd);
+        }
+        _anim.SetBool("AttackActive", false);
         attackActive = false;
     }
+
     void Chase()
     {
         transform.forward = _player.gameObject.transform.position - transform.position;
-        transform.position += transform.forward * VariablesPointer.EnemyExplosiveState.speed * Time.deltaTime;
+        transform.position += transform.forward * VariablesPointer.EnemyHeavyState.speed * Time.deltaTime;
     }
     protected override void DeathFeedback()
     {
@@ -60,7 +62,7 @@ public class HeavyEnemy : Enemy
 
     protected override void Shoot()
     {
-
+        EnemyBulletSpawner.Instance.GetBulletAt(spawnBullets);
     }
 
     public static void TurnOn(HeavyEnemy b)
