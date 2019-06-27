@@ -60,7 +60,10 @@ public class ShopMachine : MonoBehaviour
         bool canBuy = _itemScroller.CanBuy();
 
         OnBuy(canBuy);
-        StartCoroutine(ExitShopping());
+        if (canBuy)
+        {
+            StartCoroutine(ExitShopping());
+        }
     }
 
     public void ChangeWeapon(int weaponID)

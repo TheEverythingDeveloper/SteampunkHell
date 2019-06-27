@@ -131,7 +131,6 @@ public class Model : MonoBehaviour
     public void Jump()
     {
         OnJump();
-        _audioControl.MakeSound(3); //TODO: poner aca el numero del sonido de salto
     }
 
     public void CanShop(bool enter)

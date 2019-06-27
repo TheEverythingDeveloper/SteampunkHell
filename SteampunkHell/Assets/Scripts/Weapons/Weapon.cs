@@ -13,6 +13,8 @@ public class Weapon : MonoBehaviour
     protected bool _reloading;
     public PlayerAudioController audioController;
     public Transform[] spawnBulletsTransforms;
+    public AudioClip reloadClip;
+    public AudioClip shootClip;
 
     public virtual bool CanShoot()
     {
@@ -29,7 +31,7 @@ public class Weapon : MonoBehaviour
     /// </summary>
     public virtual void Shoot(float speed)
     {
-        audioController.MakeSound(4); 
+        audioController.MakeSound(shootClip); 
         reloadAmount--;
         _anim.speed = speed * 0.1f;
         _anim.SetTrigger("Shoot");
@@ -38,7 +40,10 @@ public class Weapon : MonoBehaviour
     /// <summary>
     /// En el hijo vacia si es que no recarga, override si es que recarga
     /// </summary>
-    public virtual void Reload() { }
+    public virtual void Reload()
+    {
+        audioController.MakeSound(reloadClip);
+    }
 
     /// <summary>
     /// Mostrar el arma. No tiene ningun efecto en gameplay. Simplemente animacion.

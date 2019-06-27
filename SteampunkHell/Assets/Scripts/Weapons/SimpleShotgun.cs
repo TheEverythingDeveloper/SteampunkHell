@@ -6,6 +6,7 @@ public class SimpleShotgun : Weapon
 {
     public override void Reload()
     {
+        base.Reload();
         if (_reloading) return;
         _reloading = true;
         base.Reload();
