@@ -14,17 +14,17 @@ public class PlayerPointsController : MonoBehaviour
         ChangePoints(pointsTable[(int)unitID]);
     }
 
-    private void ChangePoints(int amount)
+    public void ChangePoints(int amount)
     {
         points += amount;
-        UIController.Instance.NewPoints(amount);
+        UIController.Instance.NewPoints(points);
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            points += 100;
+            ChangePoints(100);
         }
     }
 }

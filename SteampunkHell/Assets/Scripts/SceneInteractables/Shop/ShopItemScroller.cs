@@ -57,7 +57,7 @@ public class ShopItemScroller : MonoBehaviour
     {
         if (canBuy)
         {
-            userCurrency.points -= _selectedItem.price;
+            userCurrency.ChangePoints(-_selectedItem.price);
             shopModel.ChangeWeapon(_selectedItem.itemID);
         }
 

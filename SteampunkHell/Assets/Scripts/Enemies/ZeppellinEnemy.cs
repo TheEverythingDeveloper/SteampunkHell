@@ -41,6 +41,7 @@ public class ZeppellinEnemy : Enemy
     protected override void DeathFeedback()
     {
         //TODO: Sonido de explosion
+        EnemySpawner.Instance.ReturnEnemy(this);
     }
 
     public void ZeppellinChangeMode(int changeModeID)
@@ -102,8 +103,4 @@ public class ZeppellinEnemy : Enemy
         b.gameObject.SetActive(false);
     }
 
-    protected override void ReturnEnemy()
-    {
-        EnemySpawner.Instance.ReturnEnemy(this);
-    }
 }

@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class SniperEnemy : Enemy
 {
     public float distanceAttack;
-    public Transform head, spawnBullets;
+    public Transform head;
     [Tooltip("Esta va a ser la distancia a la que va a apuntar del jugador. Si esta en 0 va a apuntar a su frente")]
     float _failOffset; 
     [Tooltip("Tiempo de espera entre cada vez que dispara y apunta de nuevo")]
@@ -33,7 +33,7 @@ public class SniperEnemy : Enemy
         _sniperLine.enabled = true;
         aimCD = _totalAimCD;
         StartCoroutine(ShootCoroutine());
-
+        _anim.SetBool("Dead", false);
     }
 
     protected override void Start()
@@ -73,7 +73,7 @@ public class SniperEnemy : Enemy
 
     private void Aim()
     {
-        positionPlayer = new Vector3(_player.transform.position.x, transform.position.y, _player.transform.position.z);
+        positionPlayer = new Vector3(laserPosition.x, transform.position.y, laserPosition.z);
         transform.LookAt(positionPlayer);
 
         _sniperLine.SetPosition(0, head.transform.position);
@@ -97,8 +97,7 @@ public class SniperEnemy : Enemy
         {
             _sniperLine.SetPosition(1, hit.point);
         }
-        head.LookAt(laserPosition);
-        spawnBullets.LookAt(laserPosition);
+        head.LookAt(hit.point);
 
     }
 
@@ -114,6 +113,11 @@ public class SniperEnemy : Enemy
 
     protected override void DeathFeedback()
     {
+        if (!_agent.isStopped)
+        {
+            _agent.isStopped = true;
+            _rb.velocity = Vector3.zero;
+        }
         _sniperLine.enabled = false;
         _anim.SetBool("Dead", true);
         StartCoroutine(DeadCoroutine());
@@ -126,7 +130,7 @@ public class SniperEnemy : Enemy
     protected override void Shoot()
     {
         aimCD = _totalAimCD;
-        EnemyBulletSpawner.Instance.GetBulletAt(spawnBullets);
+        EnemyBulletSpawner.Instance.GetBulletAt(head);
     }
 
     public static void TurnOn(SniperEnemy b)

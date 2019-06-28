@@ -24,7 +24,7 @@ public class EnemyBulletSpawner : MonoBehaviour
     {
         var b = pool.GetObject();
         b.transform.position = targetTransform.position;
-        b.transform.localRotation = targetTransform.localRotation;
+        b.transform.rotation = targetTransform.rotation;
     }
 
     public EnemyBullet bulletPrefab;

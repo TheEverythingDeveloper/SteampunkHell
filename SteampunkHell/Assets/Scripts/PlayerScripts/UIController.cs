@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIController : MonoBehaviour
 {
@@ -28,6 +29,8 @@ public class UIController : MonoBehaviour
 
     private Ulti _actualUlti;
     private bool _ulting; //cuando se esta usando la ulti
+
+    public TextMeshProUGUI textPoints;
 
     private void Awake()
     {
@@ -86,6 +89,7 @@ public class UIController : MonoBehaviour
 
     public void NewPoints(float points)
     {
+        textPoints.text = "$" + points;
         //TODO: Funcion de puntos apareciendo
     }
 
