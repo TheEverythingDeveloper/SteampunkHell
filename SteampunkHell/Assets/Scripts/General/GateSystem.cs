@@ -27,11 +27,6 @@ public class GateSystem : MonoBehaviour
     {
         //EventsManager.SubscribeToEvent(TypeOfEvent.NewWave, ActivateStage);
         EventsManager.SubscribeToEvent(TypeOfEvent.FinishWave, ClosedDoors);
-       /* for (int i = 0; i < doors.Count; i++)
-        {
-            var t = Random.Range(0, texturesDoor.Count);
-            doors[i].gameObject.GetComponent<Renderer>().material.SetTexture("_Texture", texturesDoor[t]);
-        }*/
     }
     public void ClosedDoors(params object[] parameters)
     {

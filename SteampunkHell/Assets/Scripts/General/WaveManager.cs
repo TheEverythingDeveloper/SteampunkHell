@@ -106,12 +106,11 @@ public class WaveManager : MonoBehaviour
             var selectEnemy = Random.Range(1, 4);
 
             if (selectEnemy == 1)
-                EnemySpawner.Instance.GetEnemyExplosive(GateSystem.Instance.doors[numberDoor].spawnEnemy());
+                EnemySpawner.Instance.GetEnemyHeavy(GateSystem.Instance.doors[numberDoor].spawnEnemy());
             else
                 EnemySpawner.Instance.GetEnemySniper(GateSystem.Instance.doors[numberDoor].spawnEnemy());
         }
 
-        Debug.Log("bla");
         EnemySpawner.Instance.GetEnemyZeppellin(
             GateSystem.Instance.zepellinSpawnPoints[Random.Range(0, GateSystem.Instance.zepellinSpawnPoints.Count)]);
     }
@@ -123,7 +122,7 @@ public class WaveManager : MonoBehaviour
             var selectEnemy = Random.Range(1, 2);
 
             if (selectEnemy == 1)
-                EnemySpawner.Instance.GetEnemyExplosive(GateSystem.Instance.doors[numberDoor].spawnEnemy());
+                EnemySpawner.Instance.GetEnemyHeavy(GateSystem.Instance.doors[numberDoor].spawnEnemy());
             else
                 EnemySpawner.Instance.GetEnemySniper(GateSystem.Instance.doors[numberDoor].spawnEnemy());
         }

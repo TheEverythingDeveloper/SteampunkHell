@@ -20,7 +20,7 @@ public class EnemySpawner : MonoBehaviour
         _Instance = this;
         poolEnemyExplosive = new ObjectPool<EnemyExplosive>(EnemyExplosiveFactory, EnemyExplosive.TurnOn, EnemyExplosive.TurnOff, 5, true);
         poolSniperEnemy = new ObjectPool<SniperEnemy>(EnemySniperFactory, SniperEnemy.TurnOn, SniperEnemy.TurnOff, 5, true);
-       // poolEnemyHeavy = new ObjectPool<HeavyEnemy>(EnemyHeavyFactory, HeavyEnemy.TurnOn, HeavyEnemy.TurnOff, 5, true);
+        poolEnemyHeavy = new ObjectPool<HeavyEnemy>(EnemyHeavyFactory, HeavyEnemy.TurnOn, HeavyEnemy.TurnOff, 5, true);
         poolZeppellinEnemy = new ObjectPool<ZeppellinEnemy>(EnemyZeppellinFactory, ZeppellinEnemy.TurnOn, ZeppellinEnemy.TurnOff, 5, true);
     }
 

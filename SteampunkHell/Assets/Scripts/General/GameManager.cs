@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public bool movilityTest;
 
     public bool canPause;
-    public AudioSource music, ambient, openDoor;
+    public AudioSource music, ambient;
     private void Awake()
     {
         Instance = this;

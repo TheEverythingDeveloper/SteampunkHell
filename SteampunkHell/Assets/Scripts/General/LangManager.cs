@@ -31,6 +31,7 @@ public class LangManager : MonoBehaviour
     {
         //LanguageManager = LanguageU.loadCodexFromString("NombreDelDoc.csv", File.ReadAllText(Application.dataPath + "/NombreDelDoc.csv"));//Para crear el ejecutable,tirar el archivo .csv dentro de la carpeta Nombre_Data   
         StartCoroutine(DownloadCSV(externalUrl));
+        Debug.Log("Aca");
     }
 
     /// <summary>

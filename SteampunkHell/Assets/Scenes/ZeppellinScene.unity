@@ -1367,7 +1367,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &84113177
 MonoBehaviour:
@@ -4805,7 +4805,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!64 &273196254
 MeshCollider:
@@ -6224,7 +6224,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &382958741
 MonoBehaviour:
@@ -13429,7 +13429,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!33 &863110661
 MeshFilter:
@@ -17421,7 +17421,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &999021123
 MonoBehaviour:
@@ -21313,7 +21313,15 @@ MonoBehaviour:
   - {fileID: 332589963}
   - {fileID: 855314003}
   doorsActive: []
-  texturesDoor: []
+  texturesDoor:
+  - {fileID: 2800000, guid: 546dab88519d0a14d844f3f2af045691, type: 3}
+  - {fileID: 2800000, guid: 78b15df625c15254896496ab253d520e, type: 3}
+  - {fileID: 2800000, guid: b1a5204cbad0e5244a1ba5548b253957, type: 3}
+  - {fileID: 2800000, guid: 4077e760436db4945a11c1245ef4fc6e, type: 3}
+  - {fileID: 2800000, guid: e395ab5153d562843bb5853dfa879368, type: 3}
+  - {fileID: 2800000, guid: b27e17df7cfe316419f983120db5ed2c, type: 3}
+  - {fileID: 2800000, guid: 44ec551ae2e51ce47879338897ba66da, type: 3}
+  - {fileID: 2800000, guid: 36565bbc4484ecd49947f6f5de5235c3, type: 3}
   zepellinSpawnPoints:
   - {fileID: 46728829}
   - {fileID: 262374108}
@@ -21472,7 +21480,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!33 &1093238402
 MeshFilter:
@@ -21574,7 +21582,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &1114921325
 MonoBehaviour:
@@ -21623,7 +21631,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!64 &1118641771
 MeshCollider:
@@ -25594,7 +25602,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: $1000
+  m_text: $0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -27327,7 +27335,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!33 &1262210161
 MeshFilter:
@@ -31195,7 +31203,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!64 &1425689021
 MeshCollider:
@@ -32986,7 +32994,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &1642300862
 MonoBehaviour:
@@ -40263,6 +40271,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AirshipLargeSkinSteel
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6de8401bbf51244409de06c22e59bfa4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6de8401bbf51244409de06c22e59bfa4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 38.539993
@@ -42226,6 +42238,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AirshipLargeFrameIronIronLeather
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 07946115e0b32b843b115420182bcb54, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 07946115e0b32b843b115420182bcb54, type: 3}
       propertyPath: m_LocalPosition.x
       value: 61.049988
@@ -42339,7 +42355,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!64 &1984699127
 MeshCollider:
@@ -44058,7 +44074,6 @@ MonoBehaviour:
   canPause: 0
   music: {fileID: 1344115863}
   ambient: {fileID: 1041044774}
-  openDoor: {fileID: 96044440}
 --- !u!114 &2024639156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44072,7 +44087,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textStage: {fileID: 530883738}
-  initialEnemiesStage: 0
+  initialEnemiesStage: 3
   stages: 04000000080000000c000000
 --- !u!114 &2024639157
 MonoBehaviour:
@@ -44132,7 +44147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textZone: {fileID: 1512930687}
-  price: 100
+  price: 300
   newZoneClip: {fileID: 96044440}
 --- !u!114 &2025685781
 MonoBehaviour:
@@ -45224,7 +45239,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!33 &2068858463
 MeshFilter:

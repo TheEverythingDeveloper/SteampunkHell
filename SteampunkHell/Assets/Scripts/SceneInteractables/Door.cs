@@ -12,6 +12,9 @@ public class Door : MonoBehaviour
     {
         _audiosrc = GetComponent<AudioSource>();
         _animDoor = GetComponent<Animator>();
+
+        var t = Random.Range(0, int.Parse(FindObjectOfType<LangManager>().GetTranslate("ID_TCount")));
+        GetComponent<Renderer>().material.SetTexture("_Texture", FindObjectOfType<GateSystem>().texturesDoor[t]);
     }
     private void OnTriggerEnter(Collider other)
     {
