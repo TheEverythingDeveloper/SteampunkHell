@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ShopBackgroundShader
-  m_Shader: {fileID: 4800000, guid: 8bf6fabca862b8740a27db73ec1c9056, type: 3}
+  m_Name: HEU_DEFAULT_MATERIAL_6_0
+  m_Shader: {fileID: 4800000, guid: b1787a138f9f99b4eb9e65ee8c808ec7, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,16 +19,16 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _TextureSample0:
-        m_Texture: {fileID: 2800000, guid: 6d935f4d36aa7b446b1b7599420dcd33, type: 3}
+    - _BumpMap:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _texcoord:
+    - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - __dirty: 0
+    - _Shininess: 0.078125
     m_Colors:
-    - _ColorA: {r: 0.5566038, g: 0.34200957, b: 0, a: 1}
-    - _ColorB: {r: 0.26415092, g: 0.11006289, b: 0, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}

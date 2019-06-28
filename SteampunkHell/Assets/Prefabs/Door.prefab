@@ -253,8 +253,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.824234, y: 2.806854, z: 2.9056575}
-  m_Center: {x: -0.39363098, y: 0.013898691, z: 0.6007233}
+  m_Size: {x: 1.6097006, y: 2.806854, z: 2.9056575}
+  m_Center: {x: -0.00089772546, y: 0.013898691, z: 0.6007233}
 --- !u!114 &1597328530192168885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,6 +270,7 @@ MonoBehaviour:
   zoneDoor: {fileID: 0}
   textZone: {fileID: 0}
   price: 0
+  newZoneClip: {fileID: 0}
 --- !u!82 &1247839134445782512
 AudioSource:
   m_ObjectHideFlags: 0
