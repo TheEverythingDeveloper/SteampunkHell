@@ -81,6 +81,9 @@ MonoBehaviour:
   IAgressiveLayers:
     serializedVersion: 2
     m_Bits: 512
+  interactableLayers:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!54 &8040583399141400643
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -95,7 +98,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &40186105
 GameObject:

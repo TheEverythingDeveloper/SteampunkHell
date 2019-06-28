@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class SniperEnemy : Enemy
 {
     public float distanceAttack;
+    public Transform head, spawnBullets;
     [Tooltip("Esta va a ser la distancia a la que va a apuntar del jugador. Si esta en 0 va a apuntar a su frente")]
     float _failOffset; 
     [Tooltip("Tiempo de espera entre cada vez que dispara y apunta de nuevo")]
@@ -14,7 +15,8 @@ public class SniperEnemy : Enemy
     float _totalAimCD;
     LineRenderer _sniperLine;
     Vector3 laserPosition; //el laser que se acerca al jugador
-
+    Vector3 positionPlayer;
+    Animator _anim;
     protected override void Awake()
     {
         base.Awake();
@@ -22,6 +24,7 @@ public class SniperEnemy : Enemy
         _totalAimCD = aimCD;
         _agent = GetComponent<NavMeshAgent>();
         _agent.speed = VariablesPointer.EnemySniperState.movementSpeed;
+        _anim = GetComponent<Animator>();
     }
 
     protected override void Reset()
@@ -29,6 +32,7 @@ public class SniperEnemy : Enemy
         base.Reset();
         _sniperLine.enabled = true;
         aimCD = _totalAimCD;
+        StartCoroutine(ShootCoroutine());
 
     }
 
@@ -51,6 +55,8 @@ public class SniperEnemy : Enemy
             if (_agent.isStopped)
                 _agent.isStopped = false;
 
+            _anim.SetBool("Walk", true);
+
             _agent.SetDestination(_player.transform.position);
         }
         else
@@ -59,6 +65,7 @@ public class SniperEnemy : Enemy
             {
                 _agent.isStopped = true;
                 _rb.velocity = Vector3.zero;
+                _anim.SetBool("Walk", false);
             }
         }
 
@@ -66,39 +73,60 @@ public class SniperEnemy : Enemy
 
     private void Aim()
     {
+        positionPlayer = new Vector3(_player.transform.position.x, transform.position.y, _player.transform.position.z);
+        transform.LookAt(positionPlayer);
 
+        _sniperLine.SetPosition(0, head.transform.position);
         if (aimCD > 0)
         {
             aimCD -= Time.deltaTime;
         }
         else
         {
-            _sniperLine.SetPosition(0, transform.position);
             float distance = Vector3.Distance(transform.position, _player.transform.position);
             float endLaserDistance = Vector3.Distance(_sniperLine.GetPosition(1), _player.transform.position);
             //Rotar al enemigo para mirar cada vez mas cerca al jugador
             laserPosition = Vector3.MoveTowards(laserPosition, _player.transform.position - Vector3.up * 0.5f
                 , (VariablesPointer.EnemySniperState.aimSpeed + VariablesPointer.EnemySniperState.aimSpeedMultiplier / distance * (endLaserDistance > _failOffset ? 1 : 0.2f)) * Time.deltaTime * 100);
-            transform.LookAt(laserPosition);
-        }
 
+            head.forward = _player.gameObject.transform.position - transform.position;
+        }
         //Raycast para dibujar el laser
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, 1000f))
+        if (Physics.Raycast(head.position, head.forward, out hit, 1000f))
         {
             _sniperLine.SetPosition(1, hit.point);
+        }
+        head.LookAt(laserPosition);
+        spawnBullets.LookAt(laserPosition);
+
+    }
+
+    IEnumerator ShootCoroutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(shootCd + Random.Range(-1f, 1f));
+            Shoot();
+            yield return new WaitForEndOfFrame();
         }
     }
 
     protected override void DeathFeedback()
     {
         _sniperLine.enabled = false;
+        _anim.SetBool("Dead", true);
+        StartCoroutine(DeadCoroutine());
     }
-
+    IEnumerator DeadCoroutine()
+    {
+        yield return new WaitForSeconds(5);
+        EnemySpawner.Instance.ReturnEnemy(this);
+    }
     protected override void Shoot()
     {
         aimCD = _totalAimCD;
-        EnemyBulletSpawner.Instance.GetBulletAt(transform);
+        EnemyBulletSpawner.Instance.GetBulletAt(spawnBullets);
     }
 
     public static void TurnOn(SniperEnemy b)
@@ -112,8 +140,4 @@ public class SniperEnemy : Enemy
         b.gameObject.SetActive(false);
     }
 
-    protected override void ReturnEnemy()
-    {
-        EnemySpawner.Instance.ReturnEnemy(this);
-    }
 }

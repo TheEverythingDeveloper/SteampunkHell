@@ -34,6 +34,8 @@ public class VariablesPointer
     {
         damage = 10,
         speed = 3,
+        maxDistance = 3,
+        timeExploit = 3
     };
 
     public static readonly GlobalVariables EnemyHeavyState = new GlobalVariables

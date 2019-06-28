@@ -22,8 +22,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6864701246867655836}
-  - component: {fileID: 6864701246867655833}
-  - component: {fileID: 6864701246867655838}
   m_Layer: 0
   m_Name: Eyes
   m_TagString: Untagged
@@ -38,58 +36,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6864701246867655837}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.462, z: -0.0001397878}
-  m_LocalScale: {x: 0.76390904, y: 0.48087, z: 0.6248502}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6864701247249795290}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &6864701246867655833
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6864701246867655837}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &6864701246867655838
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6864701246867655837}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!1 &6864701247249795294
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,6 +57,7 @@ GameObject:
   - component: {fileID: 7598125672754590833}
   - component: {fileID: 85961916283210213}
   - component: {fileID: 5316059254664661437}
+  - component: {fileID: 7176024057554453244}
   m_Layer: 11
   m_Name: FullLaserEnemy
   m_TagString: Untagged
@@ -161,7 +115,6 @@ MonoBehaviour:
   interactableLayers:
     serializedVersion: 2
     m_Bits: 0
-  _actualShopMachine: {fileID: 0}
 --- !u!114 &7598125672754590833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,8 +133,9 @@ MonoBehaviour:
   dead: 0
   unitType: 0
   agressiveness: 5
-  _agent: {fileID: 0}
   distanceAttack: 10
+  head: {fileID: 4407831510434946609}
+  spawnBullets: {fileID: 6864701246867655836}
   aimCD: 2
 --- !u!120 &85961916283210213
 LineRenderer:
@@ -300,6 +254,25 @@ NavMeshAgent:
   m_BaseOffset: 3.93
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!95 &7176024057554453244
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6864701247249795294}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8cf72deba5ffdb14b9865162230c587f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &4407831510434546865
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -422,6 +395,12 @@ GameObject:
 --- !u!4 &4407831510434946593 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400016, guid: c9f450f50f0043241b6ed8131360178f,
+    type: 3}
+  m_PrefabInstance: {fileID: 4407831510434546865}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4407831510434946609 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: c9f450f50f0043241b6ed8131360178f,
     type: 3}
   m_PrefabInstance: {fileID: 4407831510434546865}
   m_PrefabAsset: {fileID: 0}

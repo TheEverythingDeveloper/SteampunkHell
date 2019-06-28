@@ -71,7 +71,7 @@ public class HeavyEnemy : Enemy
     }
     protected override void DeathFeedback()
     {
-
+        EnemySpawner.Instance.ReturnEnemy(this);
     }
 
     protected override void Shoot()
@@ -90,8 +90,4 @@ public class HeavyEnemy : Enemy
         b.gameObject.SetActive(false);
     }
 
-    protected override void ReturnEnemy()
-    {
-        EnemySpawner.Instance.ReturnEnemy(this);
-    }
 }

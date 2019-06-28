@@ -21,7 +21,7 @@ public abstract class Enemy : RotationScript /*Hereda las corrutinas de rotacion
     protected Model _player;
     protected float _totalLife;
     protected Rigidbody _rb;
-    public NavMeshAgent _agent;
+    protected NavMeshAgent _agent;
     //TODO: Builder de enemigo
 
     protected virtual void Awake()
@@ -41,19 +41,7 @@ public abstract class Enemy : RotationScript /*Hereda las corrutinas de rotacion
         WaveManager.Instance.AddToEnemiesActive();
         life = _totalLife;
         dead = false;
-        StartCoroutine(ShootCoroutine());
         //TODO: Aca reinicia todo
-    }
-
-    IEnumerator ShootCoroutine()
-    {
-        while (true)
-        {
-            //if (dead) yield break;
-            yield return new WaitForSeconds(shootCd + Random.Range(-1f, 1f));
-            Shoot();
-            yield return new WaitForEndOfFrame();
-        }
     }
 
     public virtual bool ReceiveDamage(float amount, Vector3 pushForce)
@@ -74,7 +62,6 @@ public abstract class Enemy : RotationScript /*Hereda las corrutinas de rotacion
         if (dead) return;
         dead = true;
         EventsManager.TriggerEvent(TypeOfEvent.EnemyDead, unitType);
-        ReturnEnemy();
         DeathFeedback();
         //TODO: Volver al pool o algo asi
     }
@@ -92,7 +79,6 @@ public abstract class Enemy : RotationScript /*Hereda las corrutinas de rotacion
 
     protected abstract void Shoot();
     protected abstract void DeathFeedback();
-    protected abstract void ReturnEnemy();
 
     public float GetDamage()//si el jugador lo toca le va a sacar vida y empujar
     {

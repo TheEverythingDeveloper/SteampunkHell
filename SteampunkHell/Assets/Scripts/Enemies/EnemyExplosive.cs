@@ -36,7 +36,6 @@ public class EnemyExplosive : Enemy
                 (_player.gameObject.transform.position - transform.position) * agressiveness
                 + Vector3.up * (agressiveness * 1.5f));
         }
-        ReturnEnemy();
         FindObjectOfType<WaveManager>().CheckEnemiesState();
         DeathFeedback();
     }
@@ -47,7 +46,7 @@ public class EnemyExplosive : Enemy
     }
     protected override void DeathFeedback()
     {
-       // gameObject.SetActive(false);
+        EnemySpawner.Instance.ReturnEnemy(this);
     }
 
     protected override void Shoot()
@@ -66,8 +65,5 @@ public class EnemyExplosive : Enemy
         b.gameObject.SetActive(false);
     }
 
-    protected override void ReturnEnemy()
-    {
-        EnemySpawner.Instance.ReturnEnemy(this);
-    }
+
 }
