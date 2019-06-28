@@ -75,14 +75,25 @@ public class PlayerStrategyController : MonoBehaviour
         weaponMng.actualWeapon.Reload();
     }
 
-    public void Shoot()
+    public void Shoot(bool start)
     {
-        actualStrategy.Shoot();
+        actualStrategy.Shoot(start);
     }
 
-    public void ShootCallBack(float speed)
+    public void ChangeWeapon(int id)
     {
-        weaponMng.actualWeapon.Shoot(speed);
+        weaponMng.ChangeWeapon(id);
+        ChangeShootCD(weaponMng.actualWeapon.shootCD); // + algo del CD del strategy (o multiplicado por cd de strategy)
+    }
+
+    public void ChangeShootCD(float newCD)
+    {
+        shootControl.ChangeShootCD(newCD);
+    }
+
+    public void ShootCallBack(bool start, float speed)
+    {
+        weaponMng.actualWeapon.Shoot(start, speed);
     }
 
     public void Jump()

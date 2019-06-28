@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerStrategy
 {
     protected PlayerStrategyController _owner;
+    public Strategy strategyType;
     protected float _bulletSpeed;
     protected float _maxDistance;
     protected float _agressiveness;
@@ -27,12 +28,12 @@ public class PlayerStrategy
         VariablesPointer.PlayerBulletState.maxDistance = _maxDistance;
         VariablesPointer.PlayerBulletState.agressiveness = _agressiveness;
         VariablesPointer.PlayerBulletState.damage = _damage;
-        _owner.shootControl.ChangeShootCD(_cd);
+        _owner.ChangeShootCD(_cd);
     }
 
-    public virtual void Shoot()
+    public virtual void Shoot(bool start)
     {
-        _owner.ShootCallBack(_bulletSpeed);
+        _owner.ShootCallBack(start, _bulletSpeed);
     }
 
     public virtual void Jump()

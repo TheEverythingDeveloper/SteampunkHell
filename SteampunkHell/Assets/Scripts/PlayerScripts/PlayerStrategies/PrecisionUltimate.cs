@@ -6,7 +6,7 @@ public class PrecisionUltimate : PlayerStrategy
 {
     public PrecisionUltimate(PlayerStrategyController owner, float bulletSpeed, float maxDistance, float agressiveness, float damage, float cd) : base(owner, bulletSpeed, maxDistance, agressiveness, damage, cd)
     {
-
+        strategyType = Strategy.PrecisionUlti;
     }
 
     public override void Enter()
@@ -25,13 +25,9 @@ public class PrecisionUltimate : PlayerStrategy
 
     }
 
-    public override void Shoot()
+    public override void Shoot(bool start)
     {
-        _owner.ShootCallBack(_bulletSpeed);
-        Debug.Log("precision shoot");
-        for (int i = 0; i < _owner.weaponMng.actualWeapon.spawnBulletsTransforms.Length; i++)
-        {
-            BulletSpawner.Instance.GetBulletAt(_owner.weaponMng.actualWeapon.spawnBulletsTransforms[i]);
-        }
+        _owner.ShootCallBack(start, _bulletSpeed);
+        _owner.weaponMng.actualWeapon.RealShoot(this);
     }
 }

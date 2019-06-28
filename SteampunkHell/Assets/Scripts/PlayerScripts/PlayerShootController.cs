@@ -32,7 +32,7 @@ public class PlayerShootController : MonoBehaviour
         }
     }
 
-    public void Shoot()
+    public void Shoot(bool start)
     {
         if (shootCD > 0) return;
 
@@ -42,7 +42,7 @@ public class PlayerShootController : MonoBehaviour
         }
         else
         {
-            _strategy.Shoot();
+            _strategy.Shoot(start);
             shootCD = _totalShootCD;
         }
     }

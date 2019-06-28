@@ -18,21 +18,25 @@ public class PlayerController
         {
             _model.Jump();
         }
-        if (Input.GetKeyDown(KeyCode.Return))
+        else if (Input.GetKeyDown(KeyCode.Return))
         {
             _model.StartStage();
         }
         if (Input.GetMouseButton(0))
         {
-            _model.Shoot();
+            _model.Shoot(true);
         }
-        if (Input.GetMouseButtonUp(0))
+        else if (Input.GetMouseButtonUp(0))
         {
-            _model.StopShooting();
+            _model.Shoot(false);
         }
         if (Input.GetKeyDown(KeyCode.B))
         {
             _model.OpenDoor();
+        }
+        else if (Input.GetKeyDown(KeyCode.R))
+        {
+
         }
 
         //Seleccion de ultis
