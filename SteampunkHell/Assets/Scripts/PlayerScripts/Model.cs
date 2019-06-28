@@ -5,16 +5,16 @@ using System;
 
 public class Model : MonoBehaviour
 {
-    PlayerController _controller;
-    View _view;
+    [HideInInspector] public PlayerController controller;
+    [HideInInspector] public View view;
     [HideInInspector] public CameraController cameraControl;
-    MoveController _moveControl;
-    PlayerLifeController _lifeControl;
-    PlayerAdrenalinController _adrenalinControl;
-    PlayerPointsController _pointsControl;
-    PlayerShootController _shootControl;
-    PlayerAudioController _audioControl;
-    PlayerStrategyController _strategyControl;
+    [HideInInspector] public MoveController moveControl;
+    [HideInInspector] public PlayerLifeController lifeControl;
+    [HideInInspector] public PlayerAdrenalinController adrenalineControl;
+    [HideInInspector] public PlayerPointsController pointsControl;
+    [HideInInspector] public PlayerShootController shootControl;
+    [HideInInspector] public PlayerAudioController audioControl;
+    [HideInInspector] public PlayerStrategyController strategyControl;
 
     private bool ulting;
     public bool isShopping;
@@ -36,45 +36,45 @@ public class Model : MonoBehaviour
 
     private void Awake()
     {
-        _controller = new PlayerController(this);
+        controller = new PlayerController(this);
         cameraControl = GetComponent<CameraController>();
 
-        _view = GetComponent<View>();
-        _moveControl = GetComponent<MoveController>();
-        _lifeControl = GetComponent<PlayerLifeController>();
-        _adrenalinControl = GetComponent<PlayerAdrenalinController>();
-        _pointsControl = GetComponent<PlayerPointsController>();
-        _shootControl = GetComponent<PlayerShootController>();
-        _audioControl = GetComponent<PlayerAudioController>();
-        _strategyControl = GetComponent<PlayerStrategyController>();
+        view = GetComponent<View>();
+        moveControl = GetComponent<MoveController>();
+        lifeControl = GetComponent<PlayerLifeController>();
+        adrenalineControl = GetComponent<PlayerAdrenalinController>();
+        pointsControl = GetComponent<PlayerPointsController>();
+        shootControl = GetComponent<PlayerShootController>();
+        audioControl = GetComponent<PlayerAudioController>();
+        strategyControl = GetComponent<PlayerStrategyController>();
     }
 
     private void Start()
     {
-        OnDeath += _lifeControl.PlayerDie;
+        OnDeath += lifeControl.PlayerDie;
 
         EventsManager.SubscribeToEvent(TypeOfEvent.EnemyDead, KillEnemy);
-        OnKill += _pointsControl.KillEnemy;
-        OnKill += _adrenalinControl.KillEnemy;
+        OnKill += pointsControl.KillEnemy;
+        OnKill += adrenalineControl.KillEnemy;
 
         OnUlti += UIController.Instance.UltiActivation;
-        OnUlti += _adrenalinControl.UltiActivation;
-        OnUlti += _strategyControl.UltiActivation;
+        OnUlti += adrenalineControl.UltiActivation;
+        OnUlti += strategyControl.UltiActivation;
 
-        OnJump += _moveControl.TryJump;
+        OnJump += moveControl.TryJump;
 
         OnReceiveDamage += UIController.Instance.ReceiveDamageFeedback;
-        OnReceiveDamage += _moveControl.HitPushForce;
+        OnReceiveDamage += moveControl.HitPushForce;
 
-        OnShoot += _shootControl.Shoot;
+        OnShoot += shootControl.Shoot;
         OnShoot += UIController.Instance.StartShooting;
 
         OnStopShooting += UIController.Instance.StopShooting;
 
-        OnCanShop += _moveControl.EnterShop;
+        OnCanShop += moveControl.EnterShop;
         //TODO: OnCanShop += _view.CanShop;
 
-        OnBuyWeapon += _strategyControl.weaponMng.ChangeWeapon;
+        OnBuyWeapon += strategyControl.weaponMng.ChangeWeapon;
         //TODO: OnBuyWeapon += _view.ChangeWeapon; //cambia la interfaz segun el arma.
         //TODO: OnBuyWeapon += _moveController.ChangeWeapon; //segun el arma nos movemos diferente
     }
@@ -83,20 +83,20 @@ public class Model : MonoBehaviour
     {
         if (isShopping || GameManager.paused) return;
 
-        _controller.ArtificialUpdate();
+        controller.ArtificialUpdate();
     }
 
     private void FixedUpdate()
     {
         if (isShopping || GameManager.paused) return;
 
-        _moveControl.ArtificialFixedUpdate();
+        moveControl.ArtificialFixedUpdate();
     }
 
     public void ReceiveDamage(float x, Vector3 vectorx)
     {
         OnReceiveDamage(x, vectorx);
-        _audioControl.MakeSound(5); //TODO: Poner aca el numero del sonido de que te pegaron
+        audioControl.MakeSound(5); //TODO: Poner aca el numero del sonido de que te pegaron
     }
 
     public void KillEnemy(params object[] parameters)
@@ -112,7 +112,7 @@ public class Model : MonoBehaviour
         }
         else
         {
-            if (_adrenalinControl.CheckUltiActivation()) ulting = true;
+            if (adrenalineControl.CheckUltiActivation()) ulting = true;
             else Debug.Log("No hay suficiente adrenalina");
         }
         OnUlti(ultiID, ulting);
@@ -171,7 +171,7 @@ public class Model : MonoBehaviour
     public void Death() 
     {
         OnDeath();
-        _audioControl.MakeSound(2);  //TODO: poner aca el numero del sonido de muerte
+        audioControl.MakeSound(2);  //TODO: poner aca el numero del sonido de muerte
         StartCoroutine(DestroyObject());
     }
 

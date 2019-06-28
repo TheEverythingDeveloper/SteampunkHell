@@ -10,7 +10,7 @@ public class CollisionController : MonoBehaviour
     public LayerMask IAgressiveLayers;
     public LayerMask interactableLayers;
 
-    [SerializeField] private ShopMachine _actualShopMachine;
+    [SerializeField] private InteractableMachine _actualInteractableMachine;
 
     private void Awake()
     {
@@ -31,8 +31,8 @@ public class CollisionController : MonoBehaviour
         if (((1 << otherGo.layer) & interactableLayers) != 0)
         {
             _model.CanShop(true);
-            _actualShopMachine = otherGo.GetComponent<ShopMachine>();
-            _actualShopMachine.PlayerOnTrigger(true);
+            _actualInteractableMachine = otherGo.GetComponent<InteractableMachine>();
+            _actualInteractableMachine.PlayerOnTrigger(_model,true);
         }
     }
 
@@ -41,8 +41,8 @@ public class CollisionController : MonoBehaviour
         GameObject otherGo = other.gameObject;
         if (((1 << otherGo.layer) & interactableLayers) != 0)
         { 
-            _actualShopMachine.PlayerOnTrigger(false);
-            _actualShopMachine = null;
+            _actualInteractableMachine.PlayerOnTrigger(_model,false);
+            _actualInteractableMachine = null;
             _model.CanShop(false);
         }
     }
@@ -51,9 +51,9 @@ public class CollisionController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if(_actualShopMachine != null)
+            if(_actualInteractableMachine != null)
             {
-                _actualShopMachine.PlayerEnter(_model, GetComponent<PlayerPointsController>());
+                _actualInteractableMachine.PlayerEnter(_model);
                 _model.StartShopping();
             }
         }
