@@ -82,7 +82,7 @@ public class ShopItemScroller : MonoBehaviour
 
         UpdateIcons();
 
-        Debug.Log("itemID: "+_selectedItem.itemID);
+        //Debug.Log("itemID: "+_selectedItem.itemID);
         SelectionCallback(_selectedItem);
     }
 

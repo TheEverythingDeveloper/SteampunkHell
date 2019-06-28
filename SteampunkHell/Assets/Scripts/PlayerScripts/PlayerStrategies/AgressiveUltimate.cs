@@ -6,7 +6,7 @@ public class AgressiveUltimate : PlayerStrategy
 {
     public AgressiveUltimate(PlayerStrategyController owner, float bulletSpeed, float maxDistance, float agressiveness, float damage, float cd) : base(owner, bulletSpeed, maxDistance, agressiveness, damage, cd)
     {
-
+        strategyType = Strategy.AgressiveUlti;
     }
     
     public override void Jump()
@@ -19,19 +19,9 @@ public class AgressiveUltimate : PlayerStrategy
 
     }
 
-    public override void Shoot()
+    public override void Shoot(bool start)
     {
-        _owner.ShootCallBack(_bulletSpeed);
-        Debug.Log("agressive shoot");
-        for (int i = 0; i < _owner.weaponMng.actualWeapon.spawnBulletsTransforms.Length; i++)
-        {
-            Transform originalTransform = _owner.weaponMng.actualWeapon.spawnBulletsTransforms[i];
-            BulletSpawner.Instance.GetBulletAt(originalTransform);
-            originalTransform.Rotate(Vector3.up, 20);
-            BulletSpawner.Instance.GetBulletAt(originalTransform);
-            originalTransform.Rotate(Vector3.up, -40);
-            BulletSpawner.Instance.GetBulletAt(originalTransform);
-            originalTransform.Rotate(Vector3.up, 20);
-        }
+        _owner.ShootCallBack(start, _bulletSpeed);
+        _owner.weaponMng.actualWeapon.RealShoot(this);
     }
 }

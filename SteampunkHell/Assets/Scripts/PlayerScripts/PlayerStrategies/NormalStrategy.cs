@@ -6,7 +6,7 @@ public class NormalStrategy : PlayerStrategy
 {
     public NormalStrategy(PlayerStrategyController owner, float bulletSpeed, float maxDistance, float agressiveness, float damage, float cd) : base(owner, bulletSpeed, maxDistance, agressiveness, damage, cd)
     {
-
+        strategyType = Strategy.Normal;
     }
 
     public override void Enter()
@@ -25,13 +25,9 @@ public class NormalStrategy : PlayerStrategy
 
     }
 
-    public override void Shoot()
+    public override void Shoot(bool start)
     {
-        base.Shoot();
-        Debug.Log("normal shoot");
-        for (int i = 0; i < _owner.weaponMng.actualWeapon.spawnBulletsTransforms.Length; i++)
-        {
-            BulletSpawner.Instance.GetBulletAt(_owner.weaponMng.actualWeapon.spawnBulletsTransforms[i]);
-        }
+        base.Shoot(start);
+        _owner.weaponMng.actualWeapon.RealShoot(this);
     }
 }

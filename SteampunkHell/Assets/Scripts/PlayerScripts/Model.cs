@@ -23,8 +23,8 @@ public class Model : MonoBehaviour
 
     public event Action OnDeath = delegate { };
     public event Action OnJump = delegate { };
-    public event Action OnShoot = delegate { };
-    public event Action OnStopShooting = delegate { };
+    public event Action OnReload = delegate { };
+    public event Action<bool> OnShoot = delegate { };
     public event Action<Ulti, bool> OnUlti = delegate { }; //ulti = tipo de ulti, bool = si se activa o desactiva
     public event Action<Unit> OnKill = delegate { };
     public event Action<float, Vector3> OnReceiveDamage = delegate { }; //float vida actual, vector3 direccion
@@ -61,20 +61,20 @@ public class Model : MonoBehaviour
         OnUlti += adrenalineControl.UltiActivation;
         OnUlti += strategyControl.UltiActivation;
 
+        OnReload += strategyControl.Reload;
+
         OnJump += moveControl.TryJump;
 
         OnReceiveDamage += UIController.Instance.ReceiveDamageFeedback;
         OnReceiveDamage += moveControl.HitPushForce;
 
         OnShoot += shootControl.Shoot;
-        OnShoot += UIController.Instance.StartShooting;
-
-        OnStopShooting += UIController.Instance.StopShooting;
+        OnShoot += UIController.Instance.Shoot;
 
         OnCanShop += moveControl.EnterShop;
         //TODO: OnCanShop += _view.CanShop;
 
-        OnBuyWeapon += strategyControl.weaponMng.ChangeWeapon;
+        OnBuyWeapon += strategyControl.ChangeWeapon;
         //TODO: OnBuyWeapon += _view.ChangeWeapon; //cambia la interfaz segun el arma.
         //TODO: OnBuyWeapon += _moveController.ChangeWeapon; //segun el arma nos movemos diferente
     }
@@ -118,14 +118,14 @@ public class Model : MonoBehaviour
         OnUlti(ultiID, ulting);
     }
 
-    public void Shoot()
+    public void Shoot(bool start)
     {
-        OnShoot();
+        OnShoot(start);
     }
 
-    public void StopShooting()
+    public void Reload()
     {
-        OnStopShooting();
+        OnReload();
     }
 
     public void Jump()

@@ -6,7 +6,7 @@ public class RewindUltimate : PlayerStrategy
 {
     public RewindUltimate(PlayerStrategyController owner, float bulletSpeed, float maxDistance, float agressiveness, float damage, float cd) : base(owner, bulletSpeed, maxDistance, agressiveness, damage, cd)
     {
-
+        strategyType = Strategy.RewindUlti;
     }
 
     public override void Jump()
@@ -19,13 +19,9 @@ public class RewindUltimate : PlayerStrategy
 
     }
 
-    public override void Shoot()
+    public override void Shoot(bool start)
     {
-        _owner.ShootCallBack(_bulletSpeed);
-        Debug.Log("rewind shoot");
-        for (int i = 0; i < _owner.weaponMng.actualWeapon.spawnBulletsTransforms.Length; i++)
-        {
-            BulletSpawner.Instance.GetBulletAt(_owner.weaponMng.actualWeapon.spawnBulletsTransforms[i]);
-        }
+        _owner.ShootCallBack(start, _bulletSpeed);
+        _owner.weaponMng.actualWeapon.RealShoot(this);
     }
 }

@@ -43,7 +43,7 @@ public class UIController : MonoBehaviour
         ChangeHP(life);
     }
 
-    public void StartShooting()
+    public void Shoot(bool start)
     {
         if (_ulting)
         {
@@ -51,15 +51,15 @@ public class UIController : MonoBehaviour
         }
         else
         {
-            ChangeCursor(CursorState.Shooting);
+            if (start)
+            {
+                ChangeCursor(CursorState.Shooting);
+            }
+            else
+            {
+                ChangeCursor(CursorState.Normal);
+            }
         }
-    }
-
-    public void StopShooting()
-    {
-        if (_ulting) return;
-
-        ChangeCursor(CursorState.Normal);
     }
     
     public void ChangeAdrenalinBar(float newAdrenalin)

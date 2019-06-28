@@ -34,13 +34,13 @@ public class ShopView : MonoBehaviour
     public void Using(bool startUsing)
     {
         enterToShopText.gameObject.SetActive(!startUsing);
-        Debug.Log(startUsing ? "se empezo a usar" : "se termino de usar");
+        //Debug.Log(startUsing ? "se empezo a usar" : "se termino de usar");
         //TODO: Shader que pasa de ser una textura que no se ve que es, a algo que se ve con detalle (al reves en caso de false)
     }
 
     public void Buy(bool canBuy)
     {
-        Debug.Log(canBuy ? "compraste un item" : "no pudiste comprarlo, te falta plata");
+        //Debug.Log(canBuy ? "compraste un item" : "no pudiste comprarlo, te falta plata");
         //en caso de que canBuy = true;
         //TODO: Animacion, particulas, etc, de haber comprado.
         //en caso de que canBuy = false;
