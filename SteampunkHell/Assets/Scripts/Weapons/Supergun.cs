@@ -2,17 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Supergun : MonoBehaviour
+public class Supergun : Weapon //Es tipo un lanzallamas. Mientras mantenes el click se va vaciando.
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Reload()
     {
-        
+        base.Reload();
+        if (_reloading) return;
+        _reloading = true;
+        base.Reload();
+        _anim.speed = reloadSpeed;
+        StartCoroutine(ReloadTimer(reloadSpeed));
     }
 
-    // Update is called once per frame
-    void Update()
+    protected virtual IEnumerator ReloadTimer(float reloadSpeed)
     {
-        
+        _anim.SetTrigger("Reload");
+        yield return new WaitForSeconds(reloadSpeed);
+        reloadAmount = _totalReload;
+        _reloading = false;
     }
 }

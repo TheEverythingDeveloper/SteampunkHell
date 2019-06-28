@@ -6611,6 +6611,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &405970990
 GameObject:
   m_ObjectHideFlags: 0
@@ -13701,6 +13723,36 @@ PrefabInstance:
       propertyPath: shootClip
       value: 
       objectReference: {fileID: 8300000, guid: f427175f27149d3499d3c628fe0f228e, type: 3}
+    - target: {fileID: 1274177004338716955, guid: 7110b06fcc3be52419e2d3fd12e7013a,
+        type: 3}
+      propertyPath: shootClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f427175f27149d3499d3c628fe0f228e, type: 3}
+    - target: {fileID: 1274177004338716955, guid: 7110b06fcc3be52419e2d3fd12e7013a,
+        type: 3}
+      propertyPath: reloadClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2c9f8a5d8c5cb4743af27d83892db72c, type: 3}
+    - target: {fileID: 5025932469166576051, guid: 7110b06fcc3be52419e2d3fd12e7013a,
+        type: 3}
+      propertyPath: reloadClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2c9f8a5d8c5cb4743af27d83892db72c, type: 3}
+    - target: {fileID: 5025932469166576051, guid: 7110b06fcc3be52419e2d3fd12e7013a,
+        type: 3}
+      propertyPath: shootClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f427175f27149d3499d3c628fe0f228e, type: 3}
+    - target: {fileID: 5025932469166576051, guid: 7110b06fcc3be52419e2d3fd12e7013a,
+        type: 3}
+      propertyPath: damage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025932469166576051, guid: 7110b06fcc3be52419e2d3fd12e7013a,
+        type: 3}
+      propertyPath: agressiveness
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7110b06fcc3be52419e2d3fd12e7013a, type: 3}
 --- !u!43 &899329071
