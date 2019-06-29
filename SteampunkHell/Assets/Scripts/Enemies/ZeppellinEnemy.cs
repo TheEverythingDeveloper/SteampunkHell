@@ -44,6 +44,15 @@ public class ZeppellinEnemy : Enemy
         EnemySpawner.Instance.ReturnEnemy(this);
     }
 
+    IEnumerator ShootCoroutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(shootCd + Random.Range(-1f, 1f));
+            Shoot();
+            yield return new WaitForEndOfFrame();
+        }
+    }
     public void ZeppellinChangeMode(int changeModeID)
     {
         if(changeModeID == 0)
